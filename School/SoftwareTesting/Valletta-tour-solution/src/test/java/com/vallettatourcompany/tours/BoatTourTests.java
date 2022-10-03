@@ -15,7 +15,7 @@ public class BoatTourTests {
 
     @BeforeEach
     public void setup() {
-        boatTour = new BoatTour("Test Walking Tour");
+        boatTour = new BoatTour("Test Boat Tour");
     }
 
     @Test

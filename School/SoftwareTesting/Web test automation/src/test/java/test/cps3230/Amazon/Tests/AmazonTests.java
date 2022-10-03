@@ -20,7 +20,7 @@ public class AmazonTests
 
     @BeforeEach
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         driver = new ChromeDriver();
 
         //Go to google and disable cookies dialog
@@ -81,7 +81,4 @@ public class AmazonTests
         //Exercise & Verify
         Assertions.assertTrue(amazon.selectItem(4));
     }
-
-    //*[@id="sc-item-Ce7d202d7-eb9b-4993-a943-a2acd6dc6057"]/div[4]/div/div[2]/div[1]/span[2]/span/input
-    //*[@id="sc-item-Ce7d202d7-eb9b-4993-a943-a2acd6dc6057"]/div[4]/div/div[2]/div[1]/span[3]/span/input
 }

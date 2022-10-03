@@ -20,7 +20,7 @@ public class bbcTests
 
     @BeforeEach
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("http://www.bbc.co.uk/news");
         driver.switchTo().activeElement().sendKeys(Keys.TAB);

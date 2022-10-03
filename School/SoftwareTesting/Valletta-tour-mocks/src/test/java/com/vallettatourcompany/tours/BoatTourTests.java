@@ -107,7 +107,7 @@ public class BoatTourTests {
     @Test
     public void testGuideWithCorrectSpecilisation() {
         //Exercise
-        boolean result = boatTour.setGuide(new TouristGuide("Maya Bertolino", TourType.BoatTour ));
+        boolean result = boatTour.setGuide(new TouristGuide("Maya Bertolino", TourType.BoatTour));
 
         //Verify
         Assertions.assertTrue(result);

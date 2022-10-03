@@ -17,7 +17,7 @@ public class CoachTourTests {
 
     @BeforeEach
     public void setup() {
-        coachTour = new CoachTour("Test Walking Tour");
+        coachTour = new CoachTour("Test Coach Tour");
     }
 
     @Test

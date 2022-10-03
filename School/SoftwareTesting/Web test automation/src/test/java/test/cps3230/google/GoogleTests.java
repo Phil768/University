@@ -18,7 +18,7 @@ public class GoogleTests {
 
     @BeforeEach
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         driver = new ChromeDriver();
 
         //Go to google and disable cookies dialog
