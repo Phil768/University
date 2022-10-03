@@ -1,0 +1,35 @@
+body
+{
+    width: 100%;
+    background-color: lightsalmon;
+    border-radius: 5px;
+}
+
+.container 
+{
+    width: 200px;
+    color: black;
+    text-align: center;
+}
+
+.title  
+{
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.btn
+{
+    font-weight: bold;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.btn:hover
+{
+    border: 1px dashed white;
+    color: white;
+    background-color: brown;
+}

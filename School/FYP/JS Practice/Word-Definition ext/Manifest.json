@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Define selected words from screen",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "permissions": ["tabs", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "search.png",
+    "default_popup": "popup.html",
+    "default title": "Word definition"
+  }
+}

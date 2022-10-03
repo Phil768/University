@@ -1,0 +1,46 @@
+body {
+  width: 250px;
+}
+.header {
+  width: 100%;
+  display: inline;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  border-bottom: 2px solid black;
+}
+
+.selectedWord {
+  font-family: "Courier New", Courier, monospace;
+  margin-left: 10px;
+}
+
+.selectedWordDefinition {
+  font-family: "Courier New", Courier, monospace;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.selectedWordExample {
+  font-family: "Courier New", Courier, monospace;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.selectedWordContent {
+  font-size: 15px;
+  font-style: italic;
+  padding-left: 10px;
+}
+
+.selectedWordDefinitionContent {
+  font-size: 15px;
+  font-style: italic;
+  padding-left: 10px;
+}
+
+.selectedWordExampleContent {
+  font-size: 15px;
+  font-style: italic;
+  padding-left: 10px;
+}

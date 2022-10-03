@@ -1,0 +1,45 @@
+#form {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#fname {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+#lname {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 4px;
+  margin-top: 4px;
+}
+
+#submit {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-left: 78px;
+  margin-top: 10px;
+}
+
+#submit:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.buttons {
+  top: 0px;
+  right: 0px;
+  float: right;
+}
+
+#red,
+#blue {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+}
