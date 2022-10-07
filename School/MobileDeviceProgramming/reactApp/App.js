@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
-      <Text style={styles.test}>This is my first test</Text>
+      <Text style={styles.test}>This is my first test test</Text>
       <Text>HELLO</Text>
       <StatusBar style="auto" />
       <Image style={styles.image} source={require("./assets/favicon.png")} />
@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
   image: {
     height: 100,
     width: 100,
+    margin: 20,
   },
 });
