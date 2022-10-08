@@ -7,25 +7,16 @@ import { styles } from "./Styles";
 import Nav from "./App";
 import Details from "./Details";
 
-export default function NavigationBar({ navigation }) {
+export default function NavigationBar({ props }) {
   return (
     <View style={styles.navigationBar}>
       <Button
         style={styles.buttons}
         title="Details"
         onPress={() => {
-          navigation.navigate("Details");
-        }}
-      />
-      <Button
-        style={styles.buttons}
-        title="Details"
-        onPress={() => {
-          navigation.navigate("Details");
+          props.Navigation.navigate("Details");
         }}
       />
     </View>
   );
 }
-
-<Nav />;
