@@ -18,4 +18,12 @@ export const styles = StyleSheet.create({
   buttons: {
     margin: 20,
   },
+  input: {
+    borderWidth: "1px",
+    borderColor: "black",
+    padding: 20,
+    margin: 20,
+    maxWidth: "100%",
+    alignItems: "left",
+  },
 });
