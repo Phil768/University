@@ -1,0 +1,20 @@
+{
+  "name": "First React extension",
+  "description": "This is just a test",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_icon": "logo192.png",
+    "default_popup": "./index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./contentScript.js"]
+    }
+  ],
+  "permissions": ["tabs", "storage"],
+  "background": {
+    "service_worker": "./background.js"
+  }
+}
