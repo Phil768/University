@@ -1,3 +1,5 @@
+package org.example;
+
 public class requestObject
 {
     int alertType;
@@ -6,9 +8,9 @@ public class requestObject
     String url;
     String imageUrl;
     String postedBy;
-    int priceInCents;
+    double priceInCents;
 
-    public requestObject(int alertType, String heading, String description, String url, String imageUrl, String postedBy, int priceInCents) {
+    public requestObject(int alertType, String heading, String description, String url, String imageUrl, String postedBy, double priceInCents) {
         this.alertType = alertType;
         this.heading = heading;
         this.description = description;
@@ -66,7 +68,7 @@ public class requestObject
         this.postedBy = postedBy;
     }
 
-    public int getPriceInCents() {
+    public double getPriceInCents() {
         return priceInCents;
     }
 
