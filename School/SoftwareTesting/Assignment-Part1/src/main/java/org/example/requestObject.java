@@ -8,9 +8,9 @@ public class requestObject
     String url;
     String imageUrl;
     String postedBy;
-    double priceInCents;
+    int priceInCents;
 
-    public requestObject(int alertType, String heading, String description, String url, String imageUrl, String postedBy, double priceInCents) {
+    public requestObject(int alertType, String heading, String description, String url, String imageUrl, String postedBy, int priceInCents) {
         this.alertType = alertType;
         this.heading = heading;
         this.description = description;
@@ -68,7 +68,7 @@ public class requestObject
         this.postedBy = postedBy;
     }
 
-    public double getPriceInCents() {
+    public int getPriceInCents() {
         return priceInCents;
     }
 
