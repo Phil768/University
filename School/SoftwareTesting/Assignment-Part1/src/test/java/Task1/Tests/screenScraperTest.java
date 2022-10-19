@@ -1,5 +1,6 @@
-package Task1;
+package Task1.Tests;
 
+import Task1.PageObjects.MaltaParkPageObject;
 import org.example.httpPostRequest;
 import org.example.requestObject;
 import org.junit.jupiter.api.AfterEach;
@@ -21,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class screenScraperTest
 {
     WebDriver driver;
-
+    MaltaParkPageObject object;
     int Car = 1;
     int Boat = 2;
     int PropertyForRent = 3;
@@ -32,13 +33,20 @@ public class screenScraperTest
     @BeforeEach
     public void setup() {
         // #On Home PC use: /Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         driver = new ChromeDriver();
 
         //Go to google and disable cookies dialog
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.switchTo().activeElement().sendKeys(Keys.TAB);
+        driver.switchTo().activeElement().sendKeys(Keys.TAB);
+        driver.switchTo().activeElement().sendKeys(Keys.ENTER);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Initiating the Page object.
+        object = new MaltaParkPageObject(driver);
     }
 
     @AfterEach
@@ -47,46 +55,43 @@ public class screenScraperTest
     }
 
     @Test
-    public void Test1() throws IOException, InterruptedException {
-        WebElement searchBar = driver.findElement(By.id("search"));
-        searchBar.sendKeys("Toyota");
-        WebElement searchBtn = driver.findElement(By.xpath("//button[@class='btn btn-search']"));
-        searchBtn.submit();
-        //save all laptops in a list.
-        //List<WebElement> productImage = driver.findElements(By.xpath("//img[@class='product-image-photo main-img']"));
-        //List<WebElement> productPrice = driver.findElements(By.className("price"));
-        for(int i = 0; i <= 4; i++) {
-            List<WebElement> productUrl = driver.findElements(By.className("header"));
+    public void testSearchWithCorrectString() {
+        //Verification
+        Assertions.assertTrue(object.search("car"));
+    }
+    @Test
+    public void testSearchWithEmptyString() {
+        //Verification
+        Assertions.assertFalse(object.search(""));
+    }
+
+    @Test
+    public void testForCars() throws IOException, InterruptedException {
+        object.search("car");
+        for(int i = 4; i <= 8; i++) {
+            //Initiating driver.wait in order to wait for elements to load.
             WebDriverWait wait = new WebDriverWait(driver, 10);
+            List<WebElement> productUrl = wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("header"))));
             WebElement selectedProductDetails = wait.until(ExpectedConditions.elementToBeClickable(productUrl.get(i)));
             WebElement url = wait.until(ExpectedConditions.elementToBeClickable(selectedProductDetails));
+
+            //Storing all the elements obtained in the correct variables to create the object.
             String URL = url.getAttribute("href");
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             selectedProductDetails.click();
             String header = driver.findElement(By.xpath("//*[@id=\"page-content-left\"]/div[1]/h1[1]/span")).getText();
-            int price = Integer.parseInt(driver.findElement(By.className("top-price")).getText().replace(",","").replace("€","").replace(" ", "").replace(".", ""));
+            //Cleaning the strings to be able tos end them through the API.
+            int price = Integer.parseInt(driver.findElement(By.className("top-price")).getText().replace(",","").replace("€","").replace(" ", "").replace(".", "") + "00");
             String description = driver.findElement(By.className("readmore-wrapper")).getText().replace("\n", "").replace("\"", "");
             String src = driver.findElement(By.className("fancybox")).getAttribute("href");
 
-            requestObject request = new requestObject(6, header, description, URL, src, "01150cc0-eff8-4df5-a549-eb18cf7c6184", price);
+            //Sending the request.
+            requestObject request = new requestObject(Car, header, description, URL, src, "01150cc0-eff8-4df5-a549-eb18cf7c6184", price);
             httpPostRequest httpPostRequest = new httpPostRequest();
             httpPostRequest.sendPostRequest(request);
             productUrl.clear();
             driver.navigate().back();
             driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
         }
-        /*
-        * //WebElement selectedProductImage = productImage.get(i);
-            //WebElement selectedProductPrice = productPrice.get(i);
-            //String price = selectedProductPrice.getText();
-
-            //String newPrice = price.replace(",","").replace("€","").replace(".", "");
-
-            int priceInteger = Integer.parseInt(newPrice);
-            String heading = driver.findElement(By.className("base")).getText();
-           // String header = heading.substring(21, (heading.length()-1));
-            String details = selectedProductDetails.getText().replace("\"", "");
-            String url = selectedProductDetails.getAttribute("href");
-            //String src = selectedProductImage.getAttribute("src");*/
     }
 }
