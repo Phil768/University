@@ -1,6 +1,5 @@
 package Task1.Tests;
 
-import Task1.PageObjects.MaltaParkPageObject;
 import org.example.httpPostRequest;
 import org.example.requestObject;
 import org.example.screenScraper;
@@ -25,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 public class screenScraperTest
 {
     WebDriver driver;
-    MaltaParkPageObject object;
     screenScraper  scraper;
     final int Car = 1;
     final int Boat = 2;
@@ -37,7 +35,7 @@ public class screenScraperTest
     @BeforeEach
     public void setup() {
         // #On Home PC use: /Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         driver = new ChromeDriver();
 
         //Go to google and disable cookies dialog
@@ -50,7 +48,6 @@ public class screenScraperTest
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //Initiating the Page object.
-        object = new MaltaParkPageObject(driver);
         scraper = new screenScraper(driver);
     }
 
