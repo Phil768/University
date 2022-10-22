@@ -24,7 +24,7 @@ public class MarketAlertSteps {
         //Allocate teh driver.
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-        driver.get("https://www.maltapark.com/");
+        driver.get("https://www.marketalertum.com");
         UM = new MarketAlertUM(driver);
     }
     @When("I login using {string}")
@@ -72,8 +72,48 @@ public class MarketAlertSteps {
         UM.upload(arg0);
     }
 
-    @When("I view a list of alerts {string}")
+    /*@When("I view a list of alerts {string}")
     public void iViewAListOfAlerts(String arg0) {
-        UM.viewAlerts(arg0);
+        UM.checkLayout(arg0);
+    }*/
+
+    @Then("each alert should contain an icon, which would bring the total number of images present to {int}")
+    public void eachAlertShouldContainAnIconWhichWouldBringTheTotalNumberOfImagesPresentTo(int arg0) {
+        Assertions.assertEquals(arg0, UM.numberOfImages);
+    }
+
+    @And("each alert should contain a heading, which would bring the total number of headers present to {int}")
+    public void eachAlertShouldContainAHeadingWhichWouldBringTheTotalNumberOfHeadersPresentTo(int arg0) {
+        Assertions.assertEquals(arg0, UM.numberOfHeadings);
+    }
+
+    @And("each alert should contain an image, which would bring the total number of images present to {int}")
+    public void eachAlertShouldContainAnImageWhichWouldBringTheTotalNumberOfImagesPresentTo(int arg0) {
+        Assertions.assertEquals(arg0, UM.numberOfImages);
+    }
+
+    @And("each alert should contain a link to the original product website, which would bring the total number of anchors present to {int}")
+    public void eachAlertShouldContainALinkToTheOriginalProductWebsiteWhichWouldBringTheTotalNumberOfAnchorsPresentTo(int arg0) {
+        Assertions.assertEquals(arg0, UM.numberOfAnchors);
+    }
+
+    @Given("I am an administrator of the website and I upload an alert of type {string}")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType(String arg0) throws IOException, InterruptedException {
+        //Initialize the driver.
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        driver = new ChromeDriver();
+        //Allocate teh driver.
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.get("https://www.maltapark.com/");
+        UM = new MarketAlertUM(driver);
+        int type = Integer.parseInt(arg0);
+        UM.uploadWithType(type);
+    }
+
+    @And("the icon displayed should be {string}")
+    public void theIconDisplayedShouldBe(String arg0) {
+        UM.checkFileName(arg0);
+        Assertions.assertEquals(arg0, UM.imageSource);
     }
 }
