@@ -1,5 +1,6 @@
 package Task1.Tests;
 
+import org.example.httpDeleteRequest;
 import org.example.httpPostRequest;
 import org.example.requestObject;
 import org.example.screenScraper;
@@ -42,8 +43,8 @@ public class screenScraperTest
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 1000);
+        driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 10000);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -71,7 +72,7 @@ public class screenScraperTest
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         scraper.setPageStatus(statusProvider);
-        //Verification
+        //Exercise & Verification
         Assertions.assertFalse(scraper.ScreenScraper(7));
     }
 
@@ -157,5 +158,10 @@ public class screenScraperTest
         boolean bool = scraper.ScreenScraper(Electronics);
         //Verification
         Assertions.assertFalse(bool);
+    }
+    @Test
+    public void test() throws IOException, InterruptedException {
+        httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
+        httpDeleteRequest.sendDeleteRequest();
     }
 }

@@ -24,6 +24,10 @@ public class httpPostRequest
                 .header("Content-Type", "application/json")
                 .build();
 
-        client.send(request, HttpResponse.BodyHandlers.ofString());
+        var response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println(response.statusCode());
+        System.out.println(response.body());
     }
+
 }

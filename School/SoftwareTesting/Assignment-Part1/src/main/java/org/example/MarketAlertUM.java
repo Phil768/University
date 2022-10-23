@@ -40,20 +40,25 @@ public class MarketAlertUM {
     }
 
     public void upload(int c) throws IOException, InterruptedException {
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 100);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebElement searchBar = driver.findElement(By.id("search"));
         searchBar.sendKeys("Toyota");
         WebElement searchBtn = driver.findElement(By.xpath("//button[@class='btn btn-search']"));
         searchBtn.submit();
         for (int i = 0; i <= c; i++) {
             //Initiating driver.wait in order to wait for elements to load.
-            WebDriverWait wait = new WebDriverWait(driver, 10);
+            //WebDriverWait wait = new WebDriverWait(driver, 10);
             List<WebElement> productUrl = wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("header"))));
             WebElement selectedProductDetails = wait.until(ExpectedConditions.elementToBeClickable(productUrl.get(i)));
             WebElement url = wait.until(ExpectedConditions.elementToBeClickable(selectedProductDetails));
 
             //Storing all the elements obtained in the correct variables to create the object.
             String URL = url.getAttribute("href");
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             selectedProductDetails.click();
             String header = driver.findElement(By.xpath("//*[@id=\"page-content-left\"]/div[1]/h1[1]/span")).getText();
             //Cleaning the strings to be able tos end them through the API.
@@ -65,7 +70,10 @@ public class MarketAlertUM {
             price = (Integer.parseInt(stringPrice.replace(",", "").replace("€", "").replace(" ", "").replace(".", "")));
             price = price * 100;
             String description = driver.findElement(By.className("readmore-wrapper")).getText().replace("\n", "").replace("\"", "");
-            String src = driver.findElement(By.className("fancybox")).getAttribute("href");
+            String src = "";
+            if(!driver.findElements(By.className("fancybox")).isEmpty()) {
+                src = driver.findElement(By.className("fancybox")).getAttribute("href");
+            }
 
             //Sending the request.
             requestObject request = new requestObject(1, header, description, URL, src, "01150cc0-eff8-4df5-a549-eb18cf7c6184", price);
@@ -78,28 +86,20 @@ public class MarketAlertUM {
     }
 
     public void checkElements(String userID) {
-        List<WebElement> navigation = driver.findElements(By.xpath("//a[@class='nav-link text-dark']"));
-        navigation.get(3).click();
-        WebElement idInput = driver.findElement(By.id("UserId"));
-        idInput.sendKeys(userID);
-        WebElement submit = driver.findElement(By.xpath("/html/body/div/main/form/input[2]"));
-        submit.submit();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        List<WebElement> navigation = wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath("//a[@class='nav-link text-dark']"))));
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         navigation.get(2).click();
-        List<WebElement> tables = driver.findElements(By.name("table"));
+        WebElement idInput = driver.findElement(By.id("UserId"));
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        idInput.sendKeys(userID);
+        WebElement submit = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html/body/div/main/form/input[2]"))));
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        submit.submit();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        //navigation.get(1).click();
+        List<WebElement> tables = driver.findElements(By.tagName("table"));
         numberOfElements = tables.size();
-    }
-
-    public void checkLayout(String userID) {
-        List<WebElement> navigation = driver.findElements(By.xpath("//a[@class='nav-link text-dark']"));
-        navigation.get(3).click();
-        WebElement idInput = driver.findElement(By.id("UserId"));
-        idInput.sendKeys(userID);
-        WebElement submit = driver.findElement(By.xpath("/html/body/div/main/form/input[2]"));
-        submit.submit();
-        navigation.get(2).click();
-        List<WebElement> tables = driver.findElements(By.name("td"));
-        List<WebElement> headings = driver.findElements(By.name("h4"));
-
         for(WebElement i : tables) {
             List<WebElement> elementList = i.findElements(By.xpath(".//*"));
             elementList.forEach((e) -> {
@@ -133,6 +133,9 @@ public class MarketAlertUM {
         String[] electronics = {"Laptop", "iPhone", "Samsung", "Computer"};
 
         int x = (int) (Math.random() * (4 - 0 + 1) + 0);
+        if(x == 4) {
+            x= x - 1;
+        }
         String searchString = switch (type) {
             case 1 -> Car[x];
             case 2 -> Boat[x];
@@ -142,13 +145,18 @@ public class MarketAlertUM {
             case 6 -> electronics[x];
             default -> "";
         };
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 100);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebElement searchBar = driver.findElement(By.id("search"));
         searchBar.sendKeys(searchString);
         WebElement searchBtn = driver.findElement(By.xpath("//button[@class='btn btn-search']"));
         searchBtn.submit();
-        for (int i = 0; i <= 1; i++) {
+        for (int i = 0; i <= 0; i++) {
             //Initiating driver.wait in order to wait for elements to load.
-            WebDriverWait wait = new WebDriverWait(driver, 10);
+            //WebDriverWait wait = new WebDriverWait(driver, 10);
             List<WebElement> productUrl = wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("header"))));
             WebElement selectedProductDetails = wait.until(ExpectedConditions.elementToBeClickable(productUrl.get(i)));
             WebElement url = wait.until(ExpectedConditions.elementToBeClickable(selectedProductDetails));
@@ -178,8 +186,11 @@ public class MarketAlertUM {
             driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
         }
     }
-    public void checkFileName(String name) {
+    public void checkFileName(String name) throws IOException, InterruptedException {
         WebElement image = driver.findElement(By.xpath("/html/body/div/main/table[1]/tbody/tr[1]/td/h4/img"));
-        imageSource = image.getAttribute("src").toString().substring(9);
+        String imageSrc = image.getAttribute("src").toString();
+        imageSource = imageSrc.substring(37, (imageSrc.length()));
+        httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
+        httpDeleteRequest.sendDeleteRequest();
     }
 }

@@ -6,8 +6,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.MarketAlertUM;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -25,6 +28,11 @@ public class MarketAlertSteps {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.get("https://www.marketalertum.com");
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 1000);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         UM = new MarketAlertUM(driver);
     }
     @When("I login using {string}")
@@ -41,12 +49,17 @@ public class MarketAlertSteps {
         //Initialize the driver.
         System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         driver = new ChromeDriver();
-            //Allocate teh driver.
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-            driver.get("https://www.maltapark.com/");
-            UM = new MarketAlertUM(driver);
-            UM.upload(arg0);
+        //Allocate teh driver.
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        driver.get("https://www.maltapark.com/");
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 1000);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        UM = new MarketAlertUM(driver);
+        UM.upload(arg0);
     }
 
     @When("I view a list of alerts using {string}")
@@ -112,7 +125,7 @@ public class MarketAlertSteps {
     }
 
     @And("the icon displayed should be {string}")
-    public void theIconDisplayedShouldBe(String arg0) {
+    public void theIconDisplayedShouldBe(String arg0) throws IOException, InterruptedException {
         UM.checkFileName(arg0);
         Assertions.assertEquals(arg0, UM.imageSource);
     }
