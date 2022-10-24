@@ -40,6 +40,8 @@ public class MarketAlertUM {
     }
 
     public void upload(int c) throws IOException, InterruptedException {
+        /*httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
+        httpDeleteRequest.sendDeleteRequest();*/
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(driver, 100);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
@@ -67,7 +69,7 @@ public class MarketAlertUM {
             if (stringPrice.equals("€ ---")) {
                 stringPrice = "0";
             }
-            price = (Integer.parseInt(stringPrice.replace(",", "").replace("€", "").replace(" ", "").replace(".", "")));
+            price = (Integer.parseInt(stringPrice.replace(",", "").replace("€", "").replace(" ", "").replace(".", "").replaceAll("[a-zA-Z]", "")));
             price = price * 100;
             String description = driver.findElement(By.className("readmore-wrapper")).getText().replace("\n", "").replace("\"", "");
             String src = "";
@@ -125,6 +127,8 @@ public class MarketAlertUM {
     }
 
     public void uploadWithType(int type) throws IOException, InterruptedException {
+        /*httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
+        httpDeleteRequest.sendDeleteRequest();*/
         String[] Car = {"Toyota", "Mazda", "Honda", "Suzuki"};
         String[] Boat = {"Yacht", "Sail boat", "Fishing boat", "Dingy"};
         String[] propertyForRent = {"Apartment to let", "Garage to let", "Office to let", "Flat to let"};
@@ -147,8 +151,8 @@ public class MarketAlertUM {
         };
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(driver, 100);
-        /*wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();*/
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebElement searchBar = driver.findElement(By.id("search"));
         searchBar.sendKeys(searchString);
@@ -165,14 +169,14 @@ public class MarketAlertUM {
             String URL = url.getAttribute("href");
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             selectedProductDetails.click();
-            String header = driver.findElement(By.xpath("//*[@id=\"page-content-left\"]/div[1]/h1[1]/span")).getText();
+            String header = driver.findElement(By.xpath("//*[@id=\"page-content-left\"]/div[1]/h1[1]/span")).getText().replace("\"", "");
             //Cleaning the strings to be able tos end them through the API.
             String stringPrice = driver.findElement(By.className("top-price")).getText();
             int price = 0;
             if (stringPrice.equals("€ ---")) {
                 stringPrice = "0";
             }
-            price = (Integer.parseInt(stringPrice.replace(",", "").replace("€", "").replace(" ", "").replace(".", "")));
+            price = (Integer.parseInt(stringPrice.replace(",", "").replace("€", "").replace(" ", "").replace(".", "").replace("\n", "").replaceAll("[a-zA-Z]", "")));
             price = price * 100;
             String description = driver.findElement(By.className("readmore-wrapper")).getText().replace("\n", "").replace("\"", "");
             String src = driver.findElement(By.className("fancybox")).getAttribute("href");
@@ -190,7 +194,7 @@ public class MarketAlertUM {
         WebElement image = driver.findElement(By.xpath("/html/body/div/main/table[1]/tbody/tr[1]/td/h4/img"));
         String imageSrc = image.getAttribute("src").toString();
         imageSource = imageSrc.substring(37, (imageSrc.length()));
-        /*httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
-        httpDeleteRequest.sendDeleteRequest();*/
+        httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
+        httpDeleteRequest.sendDeleteRequest();
     }
 }

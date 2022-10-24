@@ -18,12 +18,12 @@ import java.util.concurrent.TimeUnit;
 public class MarketAlertSteps {
 
     MarketAlertUM UM;
-    WebDriver driver;
+    //WebDriver driver;
     @Given("I am a user of marketalertum")
     public void iAmUsingMarketAlert() {
         //Initialize the driver.
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
         driver.get("https://www.marketalertum.com");
@@ -41,8 +41,8 @@ public class MarketAlertSteps {
     @Given("I am an administrator of the website and I upload more than {int} alerts")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadMoreThanAlerts(int arg0) throws IOException, InterruptedException {
         //Initialize the driver.
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -66,8 +66,8 @@ public class MarketAlertSteps {
     @Given("I am an administrator of the website and I upload {int} alerts")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadAlerts(int arg0) throws IOException, InterruptedException {
         //Initialize the driver.
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -104,8 +104,8 @@ public class MarketAlertSteps {
     @Given("I am an administrator of the website and I upload an alert of type {string}")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType(String arg0) throws IOException, InterruptedException {
         //Initialize the driver.
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
