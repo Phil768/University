@@ -42,7 +42,7 @@ Feature: MarketAlertUM interaction
         |alert-type|icon-file-name          |
         |1         |icon-car.png            |
         |2         |icon-boat.png           |
-        |3         |icon-property-rent.png  |
-        |4         |icon-property-sale.png  |
+        |3         |icon-property-rent.jpg  |
+        |4         |icon-property-sale.jpg  |
         |5         |icon-toys.png           |
         |6         |icon-electronics.png    |

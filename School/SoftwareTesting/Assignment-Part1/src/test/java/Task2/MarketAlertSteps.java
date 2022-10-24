@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.MarketAlertUM;
+import org.example.httpDeleteRequest;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -103,6 +104,8 @@ public class MarketAlertSteps {
 
     @Given("I am an administrator of the website and I upload an alert of type {string}")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType(String arg0) throws IOException, InterruptedException {
+        httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
+        httpDeleteRequest.sendDeleteRequest();
         //Initialize the driver.
         System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         WebDriver driver = new ChromeDriver();

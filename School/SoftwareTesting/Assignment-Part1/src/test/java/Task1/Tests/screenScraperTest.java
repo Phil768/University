@@ -36,7 +36,7 @@ public class screenScraperTest
     @BeforeEach
     public void setup() {
         // #On Home PC use: /Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         driver = new ChromeDriver();
 
         //Go to google and disable cookies dialog
