@@ -42,8 +42,8 @@ public class MarketAlertUM {
     public void upload(int c) throws IOException, InterruptedException {
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(driver, 100);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
+        /*wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();*/
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebElement searchBar = driver.findElement(By.id("search"));
         searchBar.sendKeys("Toyota");
@@ -147,8 +147,8 @@ public class MarketAlertUM {
         };
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(driver, 100);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
+        /*wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();*/
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebElement searchBar = driver.findElement(By.id("search"));
         searchBar.sendKeys(searchString);
@@ -190,7 +190,7 @@ public class MarketAlertUM {
         WebElement image = driver.findElement(By.xpath("/html/body/div/main/table[1]/tbody/tr[1]/td/h4/img"));
         String imageSrc = image.getAttribute("src").toString();
         imageSource = imageSrc.substring(37, (imageSrc.length()));
-        httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
-        httpDeleteRequest.sendDeleteRequest();
+        /*httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
+        httpDeleteRequest.sendDeleteRequest();*/
     }
 }

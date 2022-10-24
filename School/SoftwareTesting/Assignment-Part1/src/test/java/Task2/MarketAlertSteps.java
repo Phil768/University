@@ -26,13 +26,7 @@ public class MarketAlertSteps {
         driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.get("https://www.marketalertum.com");
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 1000);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         UM = new MarketAlertUM(driver);
     }
     @When("I login using {string}")
@@ -51,12 +45,9 @@ public class MarketAlertSteps {
         driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 1000);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         UM = new MarketAlertUM(driver);
         UM.upload(arg0);
@@ -79,7 +70,7 @@ public class MarketAlertSteps {
         driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
         UM = new MarketAlertUM(driver);
         UM.upload(arg0);
@@ -117,7 +108,7 @@ public class MarketAlertSteps {
         driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
         UM = new MarketAlertUM(driver);
         int type = Integer.parseInt(arg0);
