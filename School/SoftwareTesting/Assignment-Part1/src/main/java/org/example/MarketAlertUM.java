@@ -42,8 +42,8 @@ public class MarketAlertUM {
     public void upload(int c) throws IOException, InterruptedException {
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(driver, 100);
-        /*wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();*/
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebElement searchBar = driver.findElement(By.id("search"));
         searchBar.sendKeys("Toyota");
