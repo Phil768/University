@@ -8,6 +8,7 @@ import java.net.http.HttpResponse;
 
 public class httpPostRequest
 {
+    public String statusCode;
     public void sendPostRequest(requestObject requestObject) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 
@@ -26,6 +27,7 @@ public class httpPostRequest
 
         var response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
+        statusCode = String.valueOf(response.statusCode());
         System.out.println(response.statusCode());
         System.out.println(response.body());
     }
