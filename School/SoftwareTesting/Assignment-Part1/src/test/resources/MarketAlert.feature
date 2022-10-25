@@ -20,9 +20,9 @@ Feature: MarketAlertUM interaction
     When I view a list of alerts using "01150cc0-eff8-4df5-a549-eb18cf7c6184"
     Then each alert should contain an icon, which would bring the total number of images present to 6
     And each alert should contain a heading, which would bring the total number of headers present to 3
-    # And each alert should contain a description
+    And each alert should contain a description, which would bring the total number of descriptions to 3
     And each alert should contain an image, which would bring the total number of images present to 6
-    # And each alert should contain a price
+    And each alert should contain a price, which would bring the total number of prices to 3
     And each alert should contain a link to the original product website, which would bring the total number of anchors present to 3
 
   Scenario: Alert limit

@@ -23,9 +23,9 @@ public class MarketAlertSteps {
     @Given("I am a user of marketalertum")
     public void iAmUsingMarketAlert() {
         //Initialize the driver.
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        //Allocate teh driver.
+        //Allocate the driver.
         driver.manage().window().maximize();
         driver.get("https://www.marketalertum.com");
         UM = new MarketAlertUM(driver);
@@ -42,7 +42,7 @@ public class MarketAlertSteps {
     @Given("I am an administrator of the website and I upload more than {int} alerts")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadMoreThanAlerts(int arg0) throws IOException, InterruptedException {
         //Initialize the driver.
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
@@ -67,7 +67,7 @@ public class MarketAlertSteps {
     @Given("I am an administrator of the website and I upload {int} alerts")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadAlerts(int arg0) throws IOException, InterruptedException {
         //Initialize the driver.
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         //Allocate teh driver.
         driver.manage().window().maximize();
@@ -96,6 +96,14 @@ public class MarketAlertSteps {
     public void eachAlertShouldContainAnImageWhichWouldBringTheTotalNumberOfImagesPresentTo(int arg0) {
         Assertions.assertEquals(arg0, UM.numberOfImages);
     }
+    @And("each alert should contain a description, which would bring the total number of descriptions to {int}")
+    public void eachAlertShouldContainADescriptionWhichWouldBringTheTotalNumberOfDescriptionsTo(int arg0) {
+        Assertions.assertEquals(arg0, UM.numberOfDescriptions);
+    }
+    @And("each alert should contain a price, which would bring the total number of prices to {int}")
+    public void eachAlertShouldContainAPriceWhichWouldBringTheTotalNumberOfPricesTo(int arg0) {
+        Assertions.assertEquals(arg0, UM.numberOfPrices);
+    }
 
     @And("each alert should contain a link to the original product website, which would bring the total number of anchors present to {int}")
     public void eachAlertShouldContainALinkToTheOriginalProductWebsiteWhichWouldBringTheTotalNumberOfAnchorsPresentTo(int arg0) {
@@ -107,9 +115,9 @@ public class MarketAlertSteps {
         httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
         httpDeleteRequest.sendDeleteRequest();
         //Initialize the driver.
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        //Allocate teh driver.
+        //Allocate the driver.
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
@@ -123,4 +131,7 @@ public class MarketAlertSteps {
         UM.checkFileName(arg0);
         Assertions.assertEquals(arg0, UM.imageSource);
     }
+
+
+
 }

@@ -20,6 +20,8 @@ public class MarketAlertUM {
     public int numberOfImages;
     public int numberOfHeadings;
     public int numberOfAnchors;
+    public int numberOfPrices;
+    public int numberOfDescriptions;
 
     public MarketAlertUM(WebDriver driver) {
         this.driver = driver;
@@ -61,17 +63,13 @@ public class MarketAlertUM {
             //Storing all the elements obtained in the correct variables to create the object.
             String URL = url.getAttribute("href");
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            selectedProductDetails.click();
+            wait.until(ExpectedConditions.elementToBeClickable(selectedProductDetails)).click();
             String header = driver.findElement(By.xpath("//*[@id=\"page-content-left\"]/div[1]/h1[1]/span")).getText();
             //Cleaning the strings to be able tos end them through the API.
             String stringPrice = driver.findElement(By.className("top-price")).getText();
-            int price = 0;
-            if (stringPrice.equals("€ ---")) {
-                stringPrice = "0";
-            }
-            price = (Integer.parseInt(stringPrice.replace(",", "").replace("€", "").replace(" ", "").replace(".", "").replaceAll("[a-zA-Z]", "")));
-            price = price * 100;
-            String description = driver.findElement(By.className("readmore-wrapper")).getText().replace("\n", "").replace("\"", "");
+            int price = new integerCleaner().cleanInteger(stringPrice);
+            String stringDescription = driver.findElement(By.className("readmore-wrapper")).getText();
+            String description = new stringCleaner().cleanString(stringDescription);
             String src = "";
             if(!driver.findElements(By.className("fancybox")).isEmpty()) {
                 src = driver.findElement(By.className("fancybox")).getAttribute("href");
@@ -101,6 +99,7 @@ public class MarketAlertUM {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         //navigation.get(1).click();
         List<WebElement> tables = driver.findElements(By.tagName("table"));
+        List<WebElement> tableData = driver.findElements(By.tagName("td"));
         numberOfElements = tables.size();
         for(WebElement i : tables) {
             List<WebElement> elementList = i.findElements(By.xpath(".//*"));
@@ -111,8 +110,15 @@ public class MarketAlertUM {
                     numberOfAnchors = numberOfAnchors + 1;
                 } else if (Objects.equals(e.getTagName(), "h4")) {
                     numberOfHeadings = numberOfHeadings + 1;
+                }else if (Objects.equals(e.getTagName(), "b")) {
+                    numberOfPrices = numberOfPrices + 1;
                 }
             });
+        }
+        for(WebElement i : tableData) {
+            if (i.getText().contains("Description:")) {
+                numberOfDescriptions = numberOfDescriptions + 1;
+            }
         }
     }
 
@@ -172,15 +178,13 @@ public class MarketAlertUM {
             String header = driver.findElement(By.xpath("//*[@id=\"page-content-left\"]/div[1]/h1[1]/span")).getText().replace("\"", "");
             //Cleaning the strings to be able tos end them through the API.
             String stringPrice = driver.findElement(By.className("top-price")).getText();
-            int price = 0;
-            if (stringPrice.equals("€ ---")) {
-                stringPrice = "0";
+            int price = new integerCleaner().cleanInteger(stringPrice);
+            String stringDescription = driver.findElement(By.className("readmore-wrapper")).getText();
+            String description = new stringCleaner().cleanString(stringDescription);
+            String src = "";
+            if(!driver.findElements(By.className("fancybox")).isEmpty()) {
+                src = driver.findElement(By.className("fancybox")).getAttribute("href");
             }
-            price = (Integer.parseInt(stringPrice.replace(",", "").replace("€", "").replace(" ", "").replace(".", "").replace("\n", "").replaceAll("[a-zA-Z]", "")));
-            price = price * 100;
-            String description = driver.findElement(By.className("readmore-wrapper")).getText().replace("\n", "").replace("\"", "");
-            String src = driver.findElement(By.className("fancybox")).getAttribute("href");
-
             //Sending the request.
             requestObject request = new requestObject(type, header, description, URL, src, "01150cc0-eff8-4df5-a549-eb18cf7c6184", price);
             httpPostRequest httpPostRequest = new httpPostRequest();

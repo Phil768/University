@@ -45,6 +45,7 @@ public class screenScraper {
                     case 4 -> propertyForSale[x];
                     case 5 -> toys[x];
                     case 6 -> electronics[x];
+                    //case 0 ->
                     default -> "";
                 };
 
@@ -85,8 +86,13 @@ public class screenScraper {
                         productUrl.clear();
                         driver.navigate().back();
                         driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+
+                        if(Objects.equals(httpPostRequest.statusCode, "200") || Objects.equals(httpPostRequest.statusCode, "201")) {
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
-                    return true;
                 }
             } else {
                 return false;

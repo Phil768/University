@@ -36,15 +36,15 @@ public class screenScraperTest
     @BeforeEach
     public void setup() {
         // #On Home PC use: /Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe
-        System.setProperty("webdriver.chrome.driver", "/Users/phili/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         driver = new ChromeDriver();
 
         //Go to google and disable cookies dialog
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
-        driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 10000);
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 100);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -159,6 +159,7 @@ public class screenScraperTest
         //Verification
         Assertions.assertFalse(bool);
     }
+
     @Test
     public void test() throws IOException, InterruptedException {
         httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
