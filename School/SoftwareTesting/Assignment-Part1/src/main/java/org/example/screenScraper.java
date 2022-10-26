@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.RequestStatusProvider;
 import utils.StatusProvider;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class screenScraper {
 
     WebDriver driver;
     public StatusProvider statusProvider;
+    public RequestStatusProvider requestStatusProvider;
 
     public screenScraper(WebDriver driver) {
         this.driver = driver;
@@ -56,50 +58,59 @@ public class screenScraper {
                     searchBar.sendKeys(searchString);
                     WebElement searchBtn = driver.findElement(By.xpath("//button[@class='btn btn-search']"));
                     searchBtn.submit();
-                    for (int i = 0; i <= 4; i++) {
-                        //Initiating driver.wait in order to wait for elements to load.
-                        WebDriverWait wait = new WebDriverWait(driver, 10);
-                        List<WebElement> productUrl = wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("header"))));
-                        WebElement selectedProductDetails = wait.until(ExpectedConditions.elementToBeClickable(productUrl.get(i)));
-                        WebElement url = wait.until(ExpectedConditions.elementToBeClickable(selectedProductDetails));
 
-                        //Storing all the elements obtained in the correct variables to create the object.
-                        String URL = url.getAttribute("href");
-                        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                        selectedProductDetails.click();
-                        String header = driver.findElement(By.xpath("//*[@id=\"page-content-left\"]/div[1]/h1[1]/span")).getText();
-                        //Cleaning the strings to be able tos end them through the API.
-                        String stringPrice = driver.findElement(By.className("top-price")).getText();
-                        int price = 0;
-                        if (stringPrice.equals("€ ---")) {
-                            stringPrice = "0";
-                        }
-                        price = (Integer.parseInt(stringPrice.replace(",", "").replace("€", "").replace(" ", "").replace(".", "")));
-                        price = price * 100;
-                        String description = driver.findElement(By.className("readmore-wrapper")).getText().replace("\n", "").replace("\"", "");
-                        String src = driver.findElement(By.className("fancybox")).getAttribute("href");
+                    if(requestStatusProvider != null) {
+                        int requestStatus = requestStatusProvider.getRequestStatusProvider();
 
-                        //Sending the request.
-                        requestObject request = new requestObject(type, header, description, URL, src, "01150cc0-eff8-4df5-a549-eb18cf7c6184", price);
-                        httpPostRequest httpPostRequest = new httpPostRequest();
-                        httpPostRequest.sendPostRequest(request);
-                        productUrl.clear();
-                        driver.navigate().back();
-                        driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+                        if(requestStatus == requestStatusProvider.goodRequest) {
+                            for (int i = 0; i <= 4; i++) {
+                                //Initiating driver.wait in order to wait for elements to load.
+                                WebDriverWait wait = new WebDriverWait(driver, 10);
+                                List<WebElement> productUrl = wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("header"))));
+                                WebElement selectedProductDetails = wait.until(ExpectedConditions.elementToBeClickable(productUrl.get(i)));
+                                WebElement url = wait.until(ExpectedConditions.elementToBeClickable(selectedProductDetails));
 
-                        if(Objects.equals(httpPostRequest.statusCode, "200") || Objects.equals(httpPostRequest.statusCode, "201")) {
-                            return true;
-                        } else {
+                                //Storing all the elements obtained in the correct variables to create the object.
+                                String URL = url.getAttribute("href");
+                                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                                selectedProductDetails.click();
+                                String header = driver.findElement(By.xpath("//*[@id=\"page-content-left\"]/div[1]/h1[1]/span")).getText();
+                                //Cleaning the strings to be able tos end them through the API.
+                                String stringPrice = driver.findElement(By.className("top-price")).getText();
+                                int price = new integerCleaner().cleanInteger(stringPrice);
+                                String stringDescription = driver.findElement(By.className("readmore-wrapper")).getText();
+                                String description = new stringCleaner().cleanString(stringDescription);
+                                String src = "";
+                                if (!driver.findElements(By.className("fancybox")).isEmpty()) {
+                                    src = driver.findElement(By.className("fancybox")).getAttribute("href");
+                                }
+
+                                //Sending the request.
+                                requestObject request = new requestObject(type, header, description, URL, src, "01150cc0-eff8-4df5-a549-eb18cf7c6184", price);
+                                httpPostRequest httpPostRequest = new httpPostRequest();
+                                httpPostRequest.sendPostRequest(request);
+                                productUrl.clear();
+                                driver.navigate().back();
+                                driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+                                /*if(Objects.equals(httpPostRequest.statusCode, "200") || Objects.equals(httpPostRequest.statusCode, "201")) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }*/
+                            }
+                        } else if(requestStatus == requestStatusProvider.badRequest) {
                             return false;
                         }
                     }
                 }
+
             } else {
                 return false;
             }
         }
         return false;
     }
+
     public void setPageStatus(StatusProvider statusProvider) {
         this.statusProvider = statusProvider;
     }

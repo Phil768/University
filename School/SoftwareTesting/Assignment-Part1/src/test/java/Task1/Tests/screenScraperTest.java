@@ -1,9 +1,6 @@
 package Task1.Tests;
 
-import org.example.httpDeleteRequest;
-import org.example.httpPostRequest;
-import org.example.requestObject;
-import org.example.screenScraper;
+import org.example.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.RequestStatusProvider;
 import utils.StatusProvider;
 
 import java.io.IOException;
@@ -61,7 +59,9 @@ public class screenScraperTest
     public void testSearchWithCorrectString() throws IOException, InterruptedException {
         //Setup
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
+        RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
         scraper.setPageStatus(statusProvider);
         //Verification
         Assertions.assertTrue(scraper.ScreenScraper(Car));
@@ -70,7 +70,9 @@ public class screenScraperTest
     public void testSearchWithEmptyString() throws IOException, InterruptedException {
         //Setup
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
+        RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
         scraper.setPageStatus(statusProvider);
         //Exercise & Verification
         Assertions.assertFalse(scraper.ScreenScraper(7));
@@ -80,7 +82,9 @@ public class screenScraperTest
     public void testForCars() throws IOException, InterruptedException {
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
+        RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
         scraper.setPageStatus(statusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(Car);
@@ -92,7 +96,9 @@ public class screenScraperTest
     public void testForBoats() throws IOException, InterruptedException {
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
+        RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
         scraper.setPageStatus(statusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(Boat);
@@ -104,7 +110,9 @@ public class screenScraperTest
     public void testForPropertyForSale() throws IOException, InterruptedException {
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
+        RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
         scraper.setPageStatus(statusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(PropertyForSale);
@@ -116,7 +124,9 @@ public class screenScraperTest
     public void testForPropertyForRent() throws IOException, InterruptedException {
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
+        RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
         scraper.setPageStatus(statusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(PropertyForRent);
@@ -128,7 +138,9 @@ public class screenScraperTest
     public void testForToys() throws IOException, InterruptedException {
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
+        RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
         scraper.setPageStatus(statusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(Toys);
@@ -140,7 +152,9 @@ public class screenScraperTest
     public void testForElectronics() throws IOException, InterruptedException {
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
+        RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
         scraper.setPageStatus(statusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(Electronics);
@@ -158,6 +172,28 @@ public class screenScraperTest
         boolean bool = scraper.ScreenScraper(Electronics);
         //Verification
         Assertions.assertFalse(bool);
+    }
+
+    @Test
+    public void testForBadRequest() throws IOException, InterruptedException {
+        //Setup.
+        StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
+        RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.badRequest);
+        scraper.setPageStatus(statusProvider);
+        //Exercise.
+        boolean bool = scraper.ScreenScraper(Electronics);
+        //Verification
+        Assertions.assertTrue(bool);
+    }
+
+    @Test
+    public void testMarketalertUM() {
+        //Setup
+        int alerts = new alertsVerification().verifyAlerts();
+        //Verification
+        Assertions.assertEquals(5, alerts);
     }
 
     @Test
