@@ -6,7 +6,7 @@ public class integerCleaner {
         if (string.equals("€ ---")) {
             string = "0";
         }
-        int price = (Integer.parseInt(string.replace(",", "").replace("€", "").replace(" ", "").replace(".", "").replaceAll("[a-zA-Z]", "")));
+        int price = (Integer.parseInt(string.replace(",", "").replace("€", "").replace(" ", "").replace(".", "").replace("\n", "").replaceAll("[a-zA-Z]", "")));
         price = price * 100;
 
         return price;

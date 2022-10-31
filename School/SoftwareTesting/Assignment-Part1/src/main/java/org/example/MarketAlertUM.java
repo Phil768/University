@@ -44,8 +44,10 @@ public class MarketAlertUM {
     public void upload(int c) throws IOException, InterruptedException {
         /*httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
         httpDeleteRequest.sendDeleteRequest();*/
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 100);
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 1000);
+        Thread.sleep(11000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("okbutton"))).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -155,8 +157,10 @@ public class MarketAlertUM {
             case 6 -> electronics[x];
             default -> "";
         };
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 100);
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 1000);
+        Thread.sleep(11000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("okbutton"))).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

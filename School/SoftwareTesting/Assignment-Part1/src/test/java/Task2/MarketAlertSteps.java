@@ -8,7 +8,9 @@ import org.example.MarketAlertUM;
 import org.example.httpDeleteRequest;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -49,7 +51,6 @@ public class MarketAlertSteps {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         UM = new MarketAlertUM(driver);
         UM.upload(arg0);
     }
@@ -72,7 +73,10 @@ public class MarketAlertSteps {
         //Allocate teh driver.
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.maltapark.com/");
+        driver.get("https://www.maltapark.com/");/*
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.switchTo().activeElement().sendKeys(Keys.TAB);
+        driver.switchTo().activeElement().sendKeys(Keys.ENTER);*/
         UM = new MarketAlertUM(driver);
         UM.upload(arg0);
     }

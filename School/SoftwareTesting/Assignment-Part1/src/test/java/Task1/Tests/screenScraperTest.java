@@ -33,7 +33,7 @@ public class screenScraperTest
     final int Electronics = 6;
 
     @BeforeEach
-    public void setup() {
+    public void setup() throws InterruptedException {
         // #On Home PC use: /Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe
         System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         driver = new ChromeDriver();
@@ -43,6 +43,9 @@ public class screenScraperTest
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        Thread.sleep(11000);
+        driver.switchTo().activeElement().sendKeys(Keys.TAB);
+        driver.switchTo().activeElement().sendKeys(Keys.ENTER);
         WebDriverWait wait = new WebDriverWait(driver, 100);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
