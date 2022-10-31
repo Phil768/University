@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.DriverStatusProvider;
 import utils.RequestStatusProvider;
 import utils.StatusProvider;
 
@@ -60,9 +61,14 @@ public class screenScraperTest
         //Setup
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
+        DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
         scraper.setPageStatus(statusProvider);
+        scraper.setRequestStatus(requestStatusProvider);
+        scraper.setDriverStatus(driverStatusProvider);
+        
         //Verification
         Assertions.assertTrue(scraper.ScreenScraper(Car));
     }
@@ -71,9 +77,13 @@ public class screenScraperTest
         //Setup
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
+        DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
         scraper.setPageStatus(statusProvider);
+        scraper.setRequestStatus(requestStatusProvider);
+        scraper.setDriverStatus(driverStatusProvider);
         //Exercise & Verification
         Assertions.assertFalse(scraper.ScreenScraper(7));
     }
@@ -83,9 +93,13 @@ public class screenScraperTest
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
+        DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
         scraper.setPageStatus(statusProvider);
+        scraper.setRequestStatus(requestStatusProvider);
+        scraper.setDriverStatus(driverStatusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(Car);
         //Verification
@@ -97,9 +111,13 @@ public class screenScraperTest
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
+        DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
         scraper.setPageStatus(statusProvider);
+        scraper.setRequestStatus(requestStatusProvider);
+        scraper.setDriverStatus(driverStatusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(Boat);
         //Verification
@@ -111,9 +129,13 @@ public class screenScraperTest
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
+        DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
         scraper.setPageStatus(statusProvider);
+        scraper.setRequestStatus(requestStatusProvider);
+        scraper.setDriverStatus(driverStatusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(PropertyForSale);
         //Verification
@@ -125,9 +147,13 @@ public class screenScraperTest
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
+        DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
         scraper.setPageStatus(statusProvider);
+        scraper.setRequestStatus(requestStatusProvider);
+        scraper.setDriverStatus(driverStatusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(PropertyForRent);
         //Verification
@@ -139,9 +165,13 @@ public class screenScraperTest
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
+        DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
         scraper.setPageStatus(statusProvider);
+        scraper.setRequestStatus(requestStatusProvider);
+        scraper.setDriverStatus(driverStatusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(Toys);
         //Verification
@@ -153,9 +183,13 @@ public class screenScraperTest
         //Setup.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
+        DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
         scraper.setPageStatus(statusProvider);
+        scraper.setRequestStatus(requestStatusProvider);
+        scraper.setDriverStatus(driverStatusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(Electronics);
         //Verification
@@ -182,6 +216,7 @@ public class screenScraperTest
         Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
         Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.badRequest);
         scraper.setPageStatus(statusProvider);
+        scraper.setRequestStatus(requestStatusProvider);
         //Exercise.
         boolean bool = scraper.ScreenScraper(Electronics);
         //Verification
@@ -189,7 +224,18 @@ public class screenScraperTest
     }
 
     @Test
-    public void testMarketalertUM() {
+    public void testForBadDriver() throws IOException, InterruptedException {
+        DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.badDriver);
+        scraper.setDriverStatus(driverStatusProvider);
+        //Exercise.
+        boolean bool = scraper.ScreenScraper(Electronics);
+        //Verification
+        Assertions.assertTrue(bool);
+    }
+
+    @Test
+    public void testMarketAlertUM() {
         //Setup
         int alerts = new alertsVerification().verifyAlerts();
         //Verification

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.DriverStatusProvider;
 import utils.RequestStatusProvider;
 import utils.StatusProvider;
 
@@ -18,14 +19,25 @@ public class screenScraper {
     WebDriver driver;
     public StatusProvider statusProvider;
     public RequestStatusProvider requestStatusProvider;
+    public DriverStatusProvider driverStatusProvider;
 
     public screenScraper(WebDriver driver) {
-        this.driver = driver;
+
+        if(driverStatusProvider != null) {
+            int status = driverStatusProvider.getDriverStatusProvider();
+
+            if (status == driverStatusProvider.goodDriver) {
+                this.driver = driver;
+            } else if (status == driverStatusProvider.badDriver) {
+                this.driver = null;
+            }
+        }
+
     }
 
     public boolean ScreenScraper(int type) throws IOException, InterruptedException {
 
-        if(statusProvider != null) {
+        if(statusProvider != null && driver != null) {
             int status = statusProvider.getStatusProvider();
 
             if (status == statusProvider.OFFLINE) {
@@ -113,5 +125,11 @@ public class screenScraper {
 
     public void setPageStatus(StatusProvider statusProvider) {
         this.statusProvider = statusProvider;
+    }
+    public void setRequestStatus(RequestStatusProvider requestStatusProvider) {
+        this.requestStatusProvider = requestStatusProvider;
+    }
+    public void setDriverStatus(DriverStatusProvider driverStatusProvider) {
+        this.driverStatusProvider = driverStatusProvider;
     }
 }
