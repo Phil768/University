@@ -15,7 +15,7 @@ Feature: MarketAlertUM interaction
     Then I should get a login status of "False"
 
   Scenario: Alert layout
-    Given I am an administrator of the website and I upload 2 alerts
+    Given I am an administrator of the website and I upload 2 alerts of type 1
     Given I am a user of marketalertum
     When I view a list of alerts using "01150cc0-eff8-4df5-a549-eb18cf7c6184"
     Then each alert should contain an icon, which would bring the total number of images present to 6
@@ -26,13 +26,13 @@ Feature: MarketAlertUM interaction
     And each alert should contain a link to the original product website, which would bring the total number of anchors present to 3
 
   Scenario: Alert limit
-    Given I am an administrator of the website and I upload more than 5 alerts
+    Given I am an administrator of the website and I upload more than 5 alerts of type 1
     Given I am a user of marketalertum
     When I view a list of alerts using "01150cc0-eff8-4df5-a549-eb18cf7c6184"
     Then I should see 5 alerts
 
     Scenario Outline: Icon check
-      Given I am an administrator of the website and I upload an alert of type "<alert-type>"
+      Given I am an administrator of the website and I upload 0 alerts of type "<alert-type>"
       Given I am a user of marketalertum
       When I view a list of alerts using "01150cc0-eff8-4df5-a549-eb18cf7c6184"
       Then I should see 1 alerts

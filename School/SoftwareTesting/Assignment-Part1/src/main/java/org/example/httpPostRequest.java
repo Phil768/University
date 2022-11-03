@@ -8,10 +8,12 @@ import java.net.http.HttpResponse;
 
 public class httpPostRequest
 {
-    public String statusCode;
     public void sendPostRequest(requestObject requestObject) throws IOException, InterruptedException {
+
+        //Creating a new HTTP client.
         HttpClient client = HttpClient.newHttpClient();
 
+        //Creating a new HTTP request.
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.marketalertum.com/Alert"))
                 .POST(HttpRequest.BodyPublishers.ofString(
@@ -25,10 +27,12 @@ public class httpPostRequest
                 .header("Content-Type", "application/json")
                 .build();
 
+        //Storing the response of the sent request in a variable.
         var response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        statusCode = String.valueOf(response.statusCode());
+        //Printing out the status code.
         System.out.println(response.statusCode());
+        //Printing out the message body of the request.
         System.out.println(response.body());
     }
 

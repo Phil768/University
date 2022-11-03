@@ -10,6 +10,7 @@ public class requestObject
     String postedBy;
     int priceInCents;
 
+    //Constructor which creates the request object.
     public requestObject(int alertType, String heading, String description, String url, String imageUrl, String postedBy, int priceInCents) {
         this.alertType = alertType;
         this.heading = heading;
@@ -19,6 +20,8 @@ public class requestObject
         this.postedBy = postedBy;
         this.priceInCents = priceInCents;
     }
+
+    /*Getters and setters of each object variable.*/
 
     public int getAlertType() {
         return alertType;

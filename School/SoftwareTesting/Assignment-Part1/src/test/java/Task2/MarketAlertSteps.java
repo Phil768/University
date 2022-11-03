@@ -26,65 +26,109 @@ public class MarketAlertSteps {
     public void iAmUsingMarketAlert() {
         //Initialize the driver.
         System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
         //Allocate the driver.
+        WebDriver driver = new ChromeDriver();
+        //Maximize the screen to make sure that all elements have loaded correctly.
         driver.manage().window().maximize();
+        //Setting the target of the driver.
         driver.get("https://www.marketalertum.com");
+        //Allocating the MarketAlertUM object.
         UM = new MarketAlertUM(driver);
     }
     @When("I login using {string}")
     public void iLoginUsing(String arg0) {
+        //Logging in using the ID>
         UM.login(arg0);
     }
     @Then("I should get a login status of {string}")
     public void iShouldGetALoginStatusOf(String arg0) {
+        //Checking if the user had logged in.
         Assertions.assertEquals(arg0, UM.loginStatus);
     }
 
-    @Given("I am an administrator of the website and I upload more than {int} alerts")
+   /* @Given("I am an administrator of the website and I upload more than {int} alerts")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadMoreThanAlerts(int arg0) throws IOException, InterruptedException {
         //Initialize the driver.
         System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        //Allocate the driver.
         WebDriver driver = new ChromeDriver();
-        //Allocate teh driver.
+        //Maximize the screen to make sure that all elements have loaded correctly.
         driver.manage().window().maximize();
+        //Implicitly wait for the website to load properly.
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Setting the target of the driver.
         driver.get("https://www.maltapark.com/");
+        //Implicitly wait for the website to load properly.
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         UM = new MarketAlertUM(driver);
         UM.upload(arg0);
-    }
+    }*/
 
     @When("I view a list of alerts using {string}")
     public void iViewAListOfAlertsUsing(String arg0) {
+        //Checking the elements.
         UM.checkElements(arg0);
     }
 
     @Then("I should see {int} alerts")
     public void iShouldSeeAlerts(int arg0) {
+        //Checking that there are a total of 5 alerts.
         Assertions.assertEquals(arg0, UM.numberOfElements);
     }
 
-    @Given("I am an administrator of the website and I upload {int} alerts")
+    /*@Given("I am an administrator of the website and I upload {int} alerts")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadAlerts(int arg0) throws IOException, InterruptedException {
         //Initialize the driver.
         System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        //Allocate the driver.
         WebDriver driver = new ChromeDriver();
-        //Allocate teh driver.
+        //Maximize the screen to make sure that all elements have loaded correctly.
         driver.manage().window().maximize();
+        //Implicitly wait for the website to load properly.
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.maltapark.com/");/*
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-        driver.switchTo().activeElement().sendKeys(Keys.TAB);
-        driver.switchTo().activeElement().sendKeys(Keys.ENTER);*/
+        //Setting the target of the driver.
+        driver.get("https://www.maltapark.com/");
+        //Allocating the MarketAlertUM object.
         UM = new MarketAlertUM(driver);
         UM.upload(arg0);
+    }*/
+
+    @Given("I am an administrator of the website and I upload {int} alerts of type {int}")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAlertsOfType(int arg0, int arg1) throws IOException, InterruptedException {
+        //Initialize the driver.
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        //Allocate the driver.
+        WebDriver driver = new ChromeDriver();
+        //Maximize the screen to make sure that all elements have loaded correctly.
+        driver.manage().window().maximize();
+        //Implicitly wait for the website to load properly.
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Setting the target of the driver.
+        driver.get("https://www.maltapark.com/");
+        //Allocating the MarketAlertUM object.
+        UM = new MarketAlertUM(driver);
+        UM.uploadWithType(arg0, arg1);
     }
 
-    /*@When("I view a list of alerts {string}")
-    public void iViewAListOfAlerts(String arg0) {
-        UM.checkLayout(arg0);
-    }*/
+    @Given("I am an administrator of the website and I upload more than {int} alerts of type {int}")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadMoreThanAlertsOfType(int arg0, int arg1) throws IOException, InterruptedException {
+        //Initialize the driver.
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        //Allocate the driver.
+        WebDriver driver = new ChromeDriver();
+        //Maximize the screen to make sure that all elements have loaded correctly.
+        driver.manage().window().maximize();
+        //Implicitly wait for the website to load properly.
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Setting the target of the driver.
+        driver.get("https://www.maltapark.com/");
+        //Implicitly wait for the website to load properly.
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        UM = new MarketAlertUM(driver);
+        UM.uploadWithType(arg0, arg1);
+    }
+
+    /*Checking that the presence of each element of the alerts in the website.*/
 
     @Then("each alert should contain an icon, which would bring the total number of images present to {int}")
     public void eachAlertShouldContainAnIconWhichWouldBringTheTotalNumberOfImagesPresentTo(int arg0) {
@@ -114,24 +158,53 @@ public class MarketAlertSteps {
         Assertions.assertEquals(arg0, UM.numberOfAnchors);
     }
 
-    @Given("I am an administrator of the website and I upload an alert of type {string}")
+    /*@Given("I am an administrator of the website and I upload an alert of type {string}")
     public void iAmAnAdministratorOfTheWebsiteAndIUploadAnAlertOfType(String arg0) throws IOException, InterruptedException {
+        //Deleting the previous requests.
         httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
         httpDeleteRequest.sendDeleteRequest();
         //Initialize the driver.
         System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        //Allocating the driver.
         WebDriver driver = new ChromeDriver();
-        //Allocate the driver.
+        //Maximize the screen to make sure that all elements have loaded correctly.
         driver.manage().window().maximize();
+        //Implicitly wait for the website to load properly.
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Setting the target of the driver.
         driver.get("https://www.maltapark.com/");
+        //Allocating the MarketAlertUM object.
         UM = new MarketAlertUM(driver);
+        //Parsing the integer type to be a suitable parameter.
         int type = Integer.parseInt(arg0);
         UM.uploadWithType(type);
+    }*/
+
+    @Given("I am an administrator of the website and I upload {int} alerts of type {string}")
+    public void iAmAnAdministratorOfTheWebsiteAndIUploadAlertsOfType(int arg0, String arg1) throws IOException, InterruptedException {
+        //Deleting the previous requests.
+        httpDeleteRequest httpDeleteRequest = new httpDeleteRequest();
+        httpDeleteRequest.sendDeleteRequest();
+        //Initialize the driver.
+        System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
+        //Allocating the driver.
+        WebDriver driver = new ChromeDriver();
+        //Maximize the screen to make sure that all elements have loaded correctly.
+        driver.manage().window().maximize();
+        //Implicitly wait for the website to load properly.
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Setting the target of the driver.
+        driver.get("https://www.maltapark.com/");
+        //Allocating the MarketAlertUM object.
+        UM = new MarketAlertUM(driver);
+        //Parsing the integer type to be a suitable parameter.
+        int type = Integer.parseInt(arg1);
+        UM.uploadWithType(arg0, type);
     }
 
     @And("the icon displayed should be {string}")
     public void theIconDisplayedShouldBe(String arg0) throws IOException, InterruptedException {
+        //Checking the file names.
         UM.checkFileName(arg0);
         Assertions.assertEquals(arg0, UM.imageSource);
     }
