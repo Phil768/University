@@ -43,10 +43,10 @@ public class screenScraperTest
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.get("https://www.maltapark.com/");
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 1000);
         Thread.sleep(11000);
-        driver.switchTo().activeElement().sendKeys(Keys.TAB);
-        driver.switchTo().activeElement().sendKeys(Keys.ENTER);
-        WebDriverWait wait = new WebDriverWait(driver, 100);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("okbutton"))).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
