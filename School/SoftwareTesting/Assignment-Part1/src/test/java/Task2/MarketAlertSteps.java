@@ -21,7 +21,6 @@ import java.util.concurrent.TimeUnit;
 public class MarketAlertSteps {
 
     MarketAlertUM UM;
-    //WebDriver driver;
     @Given("I am a user of marketalertum")
     public void iAmUsingMarketAlert() {
         //Initialize the driver.

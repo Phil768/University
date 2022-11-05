@@ -198,7 +198,7 @@ public class MarketAlertUM {
         //Storing the search bar into a web element object.
         WebElement searchBar = driver.findElement(By.id("search"));
         //Sending the selected search string to the search bar (Toyota was chosen at random).
-        searchBar.sendKeys("Toyota");
+        searchBar.sendKeys(searchString);
         //Store the search button in a web element object.
         WebElement searchBtn = driver.findElement(By.xpath("//button[@class='btn btn-search']"));
         //Submitting the search string with the search button.
