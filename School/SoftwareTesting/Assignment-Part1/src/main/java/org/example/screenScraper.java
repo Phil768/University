@@ -5,21 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.DriverStatusProvider;
-import utils.RequestStatusProvider;
-import utils.StatusProvider;
+import org.example.utils.DriverStatusProvider;
+import org.example.utils.RequestStatusProvider;
+import org.example.utils.StatusProvider;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class screenScraper {
 
     WebDriver driver;
-    public StatusProvider statusProvider;
-    public RequestStatusProvider requestStatusProvider;
-    public DriverStatusProvider driverStatusProvider;
+    protected StatusProvider statusProvider;
+    protected RequestStatusProvider requestStatusProvider;
+    protected DriverStatusProvider driverStatusProvider;
 
     public screenScraper(WebDriver driver) {
 

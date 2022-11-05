@@ -7,18 +7,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.DriverStatusProvider;
-import utils.RequestStatusProvider;
-import utils.StatusProvider;
+import org.example.utils.DriverStatusProvider;
+import org.example.utils.RequestStatusProvider;
+import org.example.utils.StatusProvider;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class screenScraperTest
@@ -82,11 +79,11 @@ public class screenScraperTest
         //Mocking the status of the driver.
         DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         //Setting the page mock to successful.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the request mock to successful.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.goodRequest);
         //Setting the driver mock to successful.
-        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(DriverStatusProvider.goodDriver);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.
@@ -110,11 +107,11 @@ public class screenScraperTest
         //Mocking the status of the driver.
         DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         //Setting the page mock to successful.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the request mock to successful.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.goodRequest);
         //Setting the driver mock to successful.
-        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(DriverStatusProvider.goodDriver);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.
@@ -141,11 +138,11 @@ public class screenScraperTest
         //Mocking the status of the driver.
         DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         //Setting the page mock to successful.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the request mock to successful.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.goodRequest);
         //Setting the driver mock to successful.
-        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(DriverStatusProvider.goodDriver);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.
@@ -173,11 +170,11 @@ public class screenScraperTest
         //Mocking the status of the driver.
         DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         //Setting the page mock to successful.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the request mock to successful.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.goodRequest);
         //Setting the driver mock to successful.
-        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(DriverStatusProvider.goodDriver);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.
@@ -205,11 +202,11 @@ public class screenScraperTest
         //Mocking the status of the driver.
         DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         //Setting the page mock to successful.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the request mock to successful.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.goodRequest);
         //Setting the driver mock to successful.
-        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(DriverStatusProvider.goodDriver);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.
@@ -237,11 +234,11 @@ public class screenScraperTest
         //Mocking the status of the driver.
         DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         //Setting the page mock to successful.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the request mock to successful.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.goodRequest);
         //Setting the driver mock to successful.
-        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(DriverStatusProvider.goodDriver);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.
@@ -269,11 +266,11 @@ public class screenScraperTest
         //Mocking the status of the driver.
         DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         //Setting the page mock to successful.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the request mock to successful.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.goodRequest);
         //Setting the driver mock to successful.
-        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(DriverStatusProvider.goodDriver);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.
@@ -301,11 +298,11 @@ public class screenScraperTest
         //Mocking the status of the driver.
         DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         //Setting the page mock to successful.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the request mock to successful.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.goodRequest);
         //Setting the driver mock to successful.
-        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.goodDriver);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(DriverStatusProvider.goodDriver);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.
@@ -327,7 +324,7 @@ public class screenScraperTest
         //Mocking the status of the page.
         StatusProvider statusProvider = Mockito.mock(StatusProvider.class);
         //Setting the mock of the page status to offline which should return false.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.OFFLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.OFFLINE);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Exercise.
@@ -345,9 +342,9 @@ public class screenScraperTest
         //Mocking the status of the request.
         RequestStatusProvider requestStatusProvider = Mockito.mock(RequestStatusProvider.class);
         //Setting the mock of the status to online.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the mock of the request to a bad request.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.badRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.badRequest);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.
@@ -369,11 +366,11 @@ public class screenScraperTest
         //Mocking the status of the driver.
         DriverStatusProvider driverStatusProvider = Mockito.mock(DriverStatusProvider.class);
         //Setting the page mock to successful.
-        Mockito.when(statusProvider.getStatusProvider()).thenReturn(statusProvider.ONLINE);
+        Mockito.when(statusProvider.getStatusProvider()).thenReturn(StatusProvider.ONLINE);
         //Setting the request mock to successful.
-        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(requestStatusProvider.goodRequest);
+        Mockito.when(requestStatusProvider.getRequestStatusProvider()).thenReturn(RequestStatusProvider.goodRequest);
         //Setting the driver mock to failure.
-        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(driverStatusProvider.badDriver);
+        Mockito.when(driverStatusProvider.getDriverStatusProvider()).thenReturn(DriverStatusProvider.badDriver);
         //Passing the mock object to the page.
         scraper.setPageStatus(statusProvider);
         //Passing the mock object to the page.

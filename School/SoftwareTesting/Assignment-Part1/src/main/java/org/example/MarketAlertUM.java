@@ -49,66 +49,6 @@ public class MarketAlertUM {
         }
     }
 
-   /* public void upload(int c) throws IOException, InterruptedException {
-        //Implicitly wia tto make sure that all elements load properly.
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-        //Creating a new web driver wait object.
-        WebDriverWait wait = new WebDriverWait(driver, 1000);
-        //Manually putting the system on hold for 11 seconds --> (I realize that this is bad practice, however MaltaPark recently added a popup which has a timer of 11 seconds before one is able to close it).
-        Thread.sleep(11000);
-        //Pressing the ol button of the popup.
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("okbutton"))).click();
-        //Waiting for the cookie bar to become visible.
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cookiebar")));
-        //Closing the cookie bar.
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("closebutton"))).click();
-        //Implicitly wia tto make sure that all elements load properly.
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //Storing the search bar into a web element object.
-        WebElement searchBar = driver.findElement(By.id("search"));
-        //Sending the selected search string to the search bar (Toyota was chosen at random).
-        searchBar.sendKeys("Toyota");
-        //Store the search button in a web element object.
-        WebElement searchBtn = driver.findElement(By.xpath("//button[@class='btn btn-search']"));
-        //Submitting the search string with the search button.
-        searchBtn.submit();
-        //The loop will continue until it reaches the upperbound passed from the cucumber tests.
-        for (int i = 0; i <= c; i++) {
-            //Storing the products in a list of web elements.
-            List<WebElement> productUrl = wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("header"))));
-            //Storing the details of the selected product in a web element object.
-            WebElement selectedProductDetails = wait.until(ExpectedConditions.elementToBeClickable(productUrl.get(i)));
-            //Storing the url of the product in a web element object.
-            WebElement url = wait.until(ExpectedConditions.elementToBeClickable(selectedProductDetails));
-            //Storing all the elements obtained in the correct variables to create the object.
-            String URL = url.getAttribute("href");
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            wait.until(ExpectedConditions.elementToBeClickable(selectedProductDetails)).click();
-            String header = driver.findElement(By.xpath("//*[@id=\"page-content-left\"]/div[1]/h1[1]/span")).getText();
-            String stringPrice = driver.findElement(By.className("top-price")).getText();
-            //Cleaning the price using a created method.
-            int price = new integerCleaner().cleanInteger(stringPrice);
-            String stringDescription = driver.findElement(By.className("readmore-wrapper")).getText();
-            //Cleaning the string using a created method.
-            String description = new stringCleaner().cleanString(stringDescription);
-            String src = "";
-            //In case there is no image to the product.
-            if(!driver.findElements(By.className("fancybox")).isEmpty()) {
-                src = driver.findElement(By.className("fancybox")).getAttribute("href");
-            }
-
-            //Creating the request object and using the created methods, send the request to the MarketAlertUm website.
-            requestObject request = new requestObject(1, header, description, URL, src, "01150cc0-eff8-4df5-a549-eb18cf7c6184", price);
-            httpPostRequest httpPostRequest = new httpPostRequest();
-            httpPostRequest.sendPostRequest(request);
-            productUrl.clear();
-            //Go back to the products page in order for the next element to be visible when clicked.
-            driver.navigate().back();
-            //Implicit timeout to wait for the elements to load.
-            driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
-        }
-    }*/
-
     public void checkElements(String userID) {
         //Implicit timeout to wait for the elements to load.
         WebDriverWait wait = new WebDriverWait(driver, 10);

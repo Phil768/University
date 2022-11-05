@@ -41,6 +41,8 @@ public abstract class Tour {
                 //Assume it is the evening
                 return false;
             }
+        } else {
+            return false;
         }
 
         //Check if tour can take more tourists

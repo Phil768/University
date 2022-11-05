@@ -212,7 +212,7 @@ public class CoachTourTests {
         Mockito.when(timeProvider.getDaySegment()).thenReturn(TimeProvider.AFTERNOON);
 
         CoachTour coachTour = new CoachTour("My Coach Tour");
-        coachTour.setTimeProvider(timeProvider);
+        //coachTour.setTimeProvider(timeProvider);
 
         //Exercise
         boolean result = coachTour.addTourist(new Tourist("John Smith", "UK", "email@address"));
