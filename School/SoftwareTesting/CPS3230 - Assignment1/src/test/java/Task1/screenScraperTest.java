@@ -33,7 +33,6 @@ public class screenScraperTest
 
     @BeforeEach
     public void setup() throws InterruptedException {
-        // #On Home PC use: /Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe
         System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/chromedriver.exe");
         //Create a new Chrome driver object.
         driver = new ChromeDriver();
