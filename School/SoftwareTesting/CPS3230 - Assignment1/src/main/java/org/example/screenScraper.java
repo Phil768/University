@@ -46,7 +46,7 @@ public class screenScraper {
                 String[] electronics = {"Laptop", "iPhone", "Samsung", "Computer"};
 
                 //Allocating a search string index.
-                int x = (int) (Math.random() * (4 - 0 + 1) + 0);
+                int x = (int) (Math.random() * (4 + 1) + 0);
                 //For integer out of bound purposes.
                 if(x == 4) {
                     x= x - 1;
