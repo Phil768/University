@@ -7,23 +7,33 @@ import java.util.List;
 
 public class dataManagement {
     public double[][] getData() throws FileNotFoundException {
-        double[][] data = new double[572][5];
+        List<String[]> lines = new ArrayList<>();
+        double[][] data = new double[572][6];
         try (BufferedReader br = new BufferedReader(new FileReader("trainingData.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
+                lines.add(line.split(","));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        // convert our list to a String array.
+        String[][] array = new String[lines.size()][0];
+        lines.toArray(array);
+
+        for(int i = 1; i < 572; i ++) {
+            for( int j = 0; j < 6; j++) {
+                data[i][j] = Double.parseDouble(array[i][j]);
+                System.out.print(data[i][j] + " ");
+            }
+            System.out.println();
+        }
         return data;
-        //records.forEach(System.out::println);
 
     }
 
-    public void writeData(double[][] dataa) throws IOException {
-        int data[] = {100,90,87,76,64,5,8,43,39,2,5,1,2};
-
+    public void writeData(double[][] data) throws IOException {
         FileWriter writer = new FileWriter("data.csv");
         writer.write("Epoch, Error\n"); //Write headers
 

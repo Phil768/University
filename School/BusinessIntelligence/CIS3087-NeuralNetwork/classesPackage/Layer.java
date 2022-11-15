@@ -14,7 +14,7 @@ public class Layer {
     }
 
     public  double[][] hiddenLayer(){
-        neurons = new double[4][hiddenSize];
+        neurons = new double[4][inputSize];
         for(int i = 0; i < neurons.length; i ++){
             for(int j = 0; j< neurons.length; j++) {
                 neurons[i][j] = 1 - Math.random();
