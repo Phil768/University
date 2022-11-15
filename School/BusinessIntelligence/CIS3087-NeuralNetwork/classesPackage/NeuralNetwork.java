@@ -1,18 +1,18 @@
 package classesPackage;
 
 public class NeuralNetwork {
-    public int SIZE_OF_INPUT_LAYER = 5;
-    public int SIZE_OF_HIDDEN_LAYER = 4;
-    public int SIZE_OF_OUTPUT_Layer = 1;
+    public int learningRate, errorThreshold;
+    public int goodFacts, badFacts = 0;
     Layer layer;
 
-    public NeuralNetwork() {
-        this.layer = new Layer(SIZE_OF_INPUT_LAYER, SIZE_OF_HIDDEN_LAYER, SIZE_OF_OUTPUT_Layer);
+    public NeuralNetwork(int learningRate, int errorThreshold) {
+        this.learningRate = learningRate;
+        this.errorThreshold = errorThreshold;
     }
 
     public void feedForward() {
-        /*
-        * Layer.inputlayer() -> Creating the input Layer*/
+        layer = new Layer();
+
     }
 
     public void backwardsPropagation() {

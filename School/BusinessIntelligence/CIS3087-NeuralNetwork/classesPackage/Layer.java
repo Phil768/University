@@ -1,34 +1,34 @@
 package classesPackage;
 
 public class Layer {
-    public Neuron[] neurons;
+    public double[][] neurons;
+    public double[][] inputs, outputs;
     public int inputSize, hiddenSize, outputSize;
-    public Layer(int inputSize, int hiddenSize, int outputSize) {
-        this.inputSize = inputSize;
-        this.hiddenSize = hiddenSize;
-        this.outputSize = outputSize;
+
+    public  double[][] inputLayer(double [][] data){
+        inputs = new double[5][data.length];
+        for(int i = 0; i < inputs.length; i ++){
+            System.arraycopy(data[i], 0, inputs[i], 0, data.length);
+        }
+        return inputs;
     }
 
-    public  Neuron[] inputLayer(){
-        neurons = new Neuron[inputSize];
+    public  double[][] hiddenLayer(){
+        neurons = new double[4][hiddenSize];
         for(int i = 0; i < neurons.length; i ++){
-            neurons[i] = new Neuron(0);
+            for(int j = 0; j< neurons.length; j++) {
+                neurons[i][j] = 1 - Math.random();
+            }
         }
         return neurons;
     }
 
-    public  Neuron[] hiddenLayer(){
-        neurons = new Neuron[hiddenSize];
+    public  double[][] outputLayer(){
+        neurons = new double[1][hiddenSize];
         for(int i = 0; i < neurons.length; i ++){
-            neurons[i] = new Neuron(inputSize);
-        }
-        return neurons;
-    }
-
-    public  Neuron[] outputLayer(){
-        neurons = new Neuron[outputSize];
-        for(int i = 0; i < neurons.length; i ++){
-            neurons[i] = new Neuron(hiddenSize);
+            for(int j = 0; j< neurons.length; j++) {
+                neurons[i][j] = 1 - Math.random();
+            }
         }
         return neurons;
     }
