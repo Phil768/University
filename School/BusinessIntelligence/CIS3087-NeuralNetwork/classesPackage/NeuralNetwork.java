@@ -3,19 +3,23 @@ package classesPackage;
 import java.io.FileNotFoundException;
 
 public class NeuralNetwork {
-    public int learningRate, errorThreshold;
-    public int goodFacts, badFacts = 0;
+    public double learningRate, errorThreshold;
     public int epochs;
 
-    public NeuralNetwork(int epochs, int learningRate, int errorThreshold) {
+    public NeuralNetwork(int epochs, double learningRate, double errorThreshold) {
         this.epochs = epochs;
         this.learningRate = learningRate;
         this.errorThreshold = errorThreshold;
     }
 
     public void feedForward() throws FileNotFoundException {
+        //Initializing the good and the bad facts.
+        int goodFacts = 0, badFacts = 0;
         do {
-            for(int x = 0; x < epochs; x++) {
+            for(int x = 0; x <= epochs; x++) {
+                //Setting the bad and good facts to after the start of each epoch.
+                badFacts = 0;
+                goodFacts = 0;
                 //Creating a new data object to get the required data from file.
                 dataManagement d = new dataManagement();
                 //Creating the necessary arrays.
@@ -26,7 +30,7 @@ public class NeuralNetwork {
                 double[][] target = new double[data.length - 1][1];
                 //populating the input and target arrays from CSV data.
                 for (int i = 0; i < input.length; i++) {
-                    for (int j = 0; j < 5; j++) {
+                    for (int j = 0; j < input[0].length; j++) {
                         input[i][j] = data[i + 1][j];
                     }
                 }
@@ -83,6 +87,7 @@ public class NeuralNetwork {
         //Computing the new outputLayer weights.
         double delta, change = 0;
         double[][] outputDelta = new double[finalOutput.length][finalOutput[0].length];
+        double[][] hiddenDelta = new double[outputHidden.length][outputHidden[0].length];
         //Computing the delta for each output.
         for(int i = 0; i < outputWeights.length; i++) {
             for(int j = 0; j < outputWeights[0].length; j++) {
@@ -93,11 +98,25 @@ public class NeuralNetwork {
                 outputWeights[i][j] = outputWeights[i][j] + change;
             }
         }
-        //Computing the hidden layer weights.
+        //Computing the summation of output layer weights.
         double summation = 0;
+        for(int i = 0; i < outputWeights.length; i++) {
+            for(int j = 0; j < outputWeights[0].length; j++) {
+                summation += outputDelta[i][0] * outputWeights[i][j];
+            }
+        }
+        //Computing the delta of the hidden layer;
         for(int i = 0; i < outputHidden.length; i++) {
             for(int j = 0; j < outputHidden[0].length; j++) {
-
+                delta = outputHidden[i][j] * (1 - outputHidden[i][j]) * summation;
+                hiddenDelta[i][j] = delta;
+            }
+        }
+        //Computing the new weights of the hidden layer.
+        for(int i = 0; i < ; i++)  {
+            for(int j = 0; j < ; j++) {
+                change = 0.2 * hiddenDelta[][] * input[][];
+                hiddenWeights[][] = hiddenWeights[][] + change;
             }
         }
 
