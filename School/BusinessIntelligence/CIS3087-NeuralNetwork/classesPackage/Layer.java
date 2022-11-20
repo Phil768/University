@@ -18,7 +18,7 @@ public class Layer {
     }
 
     public  double[][] outputLayer(){
-        weights = new double[1][1];
+        weights = new double[4][1];
         for(int i = 0; i < weights.length; i ++){
             for(int j = 0; j< weights.length; j++) {
                 weights[i][j] = 1 - Math.random();
