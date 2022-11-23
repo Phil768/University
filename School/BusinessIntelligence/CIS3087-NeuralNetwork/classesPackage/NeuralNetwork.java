@@ -89,50 +89,48 @@ public class NeuralNetwork {
         //Creating a new matrix arithmetic object.
         matrixArithmetic matrix = new matrixArithmetic();
         //Creating the required variables.
-        double delta, change = 0;
+        double change = 0;
         double[][] outputDelta = new double[finalOutput.length][finalOutput[0].length];
         double[][] hiddenDelta = new double[outputHidden.length][outputHidden[0].length];
         //Computing the delta for each output.
         for(int i = 0; i < finalOutput.length; i++) {
             for(int j = 0; j < finalOutput[0].length; j++) {
-                delta = (finalOutput[i][j]) * (1 - finalOutput[i][j]) * (target[i][j] - finalOutput[i][j]);
-                outputDelta[i][j] = delta;
+                outputDelta[0][0] = (finalOutput[i][j]) * (1 - finalOutput[i][j]) * (target[i][j] - finalOutput[i][j]);
             }
         }
         //Changing the weights of the output layer.
         for(int i = 0; i < outputWeights.length; i++) {
             for(int j = 0; j < outputWeights[0].length; j++) {
-                change = 0.2 * outputDelta[0][0] * outputHidden[0][];
-                outputWeights[][] = outputWeights[][] + change;
+                change = 0.2 * outputDelta[0][0] * outputHidden[i][0];
+                outputWeights[i][j] = (outputWeights[i][j] + change);
             }
         }
         //Computing the summation of output layer weights.
         /*double summation = 0;
         for(int i = 0; i < outputWeights.length; i++) {
             for(int j = 0; j < outputWeights[0].length; j++) {
-                summation += outputDelta[i][0] * outputWeights[i][j];
+                summation += outputDelta[0] * outputWeights[i][j];
             }
         }*/
         double[][] summation = matrix.multiplication(outputDelta, outputWeights);
         //Computing the delta of the hidden layer;
         for(int i = 0; i < outputHidden.length; i++) {
             for(int j = 0; j < outputHidden[0].length; j++) {
-                delta = outputHidden[i][j] * (1 - outputHidden[i][j]) * summation[i][j];
-                hiddenDelta[i][j] = delta;
+                hiddenDelta[i][j] = outputHidden[i][j] * (1 - outputHidden[i][j]) * summation[i][j];
             }
         }
         //Computing the new weights of the hidden layer.
-        for(int i = 0; i < ; i++)  {
-            for(int j = 0; j < ; j++) {
-                change = 0.2 * hiddenDelta[][] * input[][];
-                hiddenWeights[][] = hiddenWeights[][] + change;
+        for(int i = 0; i < hiddenWeights.length; i++)  {
+            for(int j = 0; j < hiddenWeights[0].length; j++) {
+                change = 0.2 * hiddenDelta[0][j] * input[0][i];
+                hiddenWeights[i][j] = hiddenWeights[i][j] + change;
             }
         }
 
     }
 }
 
-/* for(int i = 0; i < outputWeights.length; i++) {
+ /*for(int i = 0; i < outputWeights.length; i++) {
             for(int j = 0; j < outputWeights[0].length; j++) {
                 delta = (finalOutput[i][0]) * (1 - finalOutput[i][0]) * (target[i][0] - finalOutput[i][0]);
                 outputDelta[i][0] = delta;
