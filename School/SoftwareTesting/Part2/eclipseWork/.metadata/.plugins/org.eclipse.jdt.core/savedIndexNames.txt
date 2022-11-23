@@ -1,0 +1,19 @@
+INDEX VERSION 1.127+C:\Users\phili\Desktop\University\School\SoftwareTesting\Part2\eclipseWork\.metadata\.plugins\org.eclipse.jdt.core
+221362712.index
+1483843356.index
+82350047.index
+2632886140.index
+1997067320.index
+86476755.index
+2375721199.index
+4232691142.index
+269501438.index
+2789192067.index
+2399829448.index
+3775979164.index
+1055303909.index
+3150387544.index
+822225846.index
+1757689957.index
+100343233.index
+3665591613.index
