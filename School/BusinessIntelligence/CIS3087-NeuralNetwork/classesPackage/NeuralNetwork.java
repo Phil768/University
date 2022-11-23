@@ -25,6 +25,9 @@ public class NeuralNetwork {
         double[][] target = new double[1][1];
         do {
             for(int x = 0; x < epochs; x++) {
+                //Setting the bad and good facts to after the start of each epoch.
+                badFacts = 0;
+                goodFacts = 0;
                 //Iterating through all the facts in each epoch.
                 for (int y = 1; y < data.length; y++) {
                     //Populating the Input layer for each fact.
@@ -35,10 +38,6 @@ public class NeuralNetwork {
                     for(int z = 0; z < 1; z++) {
                         target[0][0] = data[y][data[0].length - 1];
                     }
-                    //Setting the bad and good facts to after the start of each epoch.
-                    badFacts = 0;
-                    goodFacts = 0;
-
                     //Creating a new layer object.
                     Layer layer = new Layer();
                     //Creating a new sigmoid object.
