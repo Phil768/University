@@ -3,8 +3,10 @@ package classesPackage;
 import java.io.FileNotFoundException;
 
 public class NeuralNetwork {
-    public double learningRate, errorThreshold;
+    public static double learningRate, errorThreshold;
     public int epochs;
+    public static double[][] hiddenWeights;
+    public static double[][] outputWeights;
 
     public NeuralNetwork(int epochs, double learningRate, double errorThreshold) {
         this.epochs = epochs;
@@ -23,11 +25,19 @@ public class NeuralNetwork {
         double[][] input = new double[1][data[0].length - 1];
         //Target of each fact.
         double[][] target = new double[1][1];
+        //Creating a new layer object.
+        Layer layer = new Layer();
+        //Creating a new sigmoid object.
+        sigmoidFunction sigmoid = new sigmoidFunction();
+        //Creating new arrays to store the hidden and output weights.
+        hiddenWeights = layer.hiddenLayer();
+        outputWeights = layer.outputLayer();
         do {
             for(int x = 0; x < epochs; x++) {
                 //Setting the bad and good facts to after the start of each epoch.
                 badFacts = 0;
                 goodFacts = 0;
+                System.out.println(">>Epoch " + (x+1) + ": ");
                 //Iterating through all the facts in each epoch.
                 for (int y = 1; y < data.length; y++) {
                     //Populating the Input layer for each fact.
@@ -38,13 +48,6 @@ public class NeuralNetwork {
                     for(int z = 0; z < 1; z++) {
                         target[0][0] = data[y][data[0].length - 1];
                     }
-                    //Creating a new layer object.
-                    Layer layer = new Layer();
-                    //Creating a new sigmoid object.
-                    sigmoidFunction sigmoid = new sigmoidFunction();
-                    //Creating new arrays to store the hidden and output weights.
-                    double[][] hiddenWeights = layer.hiddenLayer();
-                    double[][] outputWeights = layer.outputLayer();
                     //Creating a new matrix object to calculate the required arithmetic.
                     matrixArithmetic multiplication = new matrixArithmetic();
                     //Multiplying the input by the weights of the hidden layer.
@@ -67,11 +70,16 @@ public class NeuralNetwork {
                             finalOutput[i][j] = sigmoid.sigmoid(outputResult[i][j]);
                         }
                     }
+                    //Testing purposes.
+                    System.out.println("Fact " + y + ": ");
+                    System.out.println("Output: " + finalOutput[0][0]);
+                    System.out.println("Target: " + target[0][0]);
+                    System.out.println();
                     //Checking the output with the error threshold.
                     for (int i = 0; i < outputResult.length; i++) {
                         for (int j = 0; j < outputResult[0].length; j++) {
-                            if (target[i][j] - outputResult[i][j] > 0.2) {
-                                backwardsPropagation(outputWeights, target, finalOutput, outputHidden, input, hiddenWeights);
+                            if ((target[i][j] - outputResult[i][j]) > errorThreshold) {
+                                backwardsPropagation(target, finalOutput, outputHidden, input);
                                 badFacts++;
                             } else {
                                 //Do nothing.
@@ -85,7 +93,7 @@ public class NeuralNetwork {
 
     }
 
-    public static void backwardsPropagation(double[][] outputWeights, double[][] target, double[][] finalOutput, double[][] outputHidden, double[][] input, double[][] hiddenWeights) {
+    public static void backwardsPropagation(double[][] target, double[][] finalOutput, double[][] outputHidden, double[][] input) {
         //Creating a new matrix arithmetic object.
         matrixArithmetic matrix = new matrixArithmetic();
         //Creating the required variables.
@@ -101,7 +109,7 @@ public class NeuralNetwork {
         //Changing the weights of the output layer.
         for(int i = 0; i < outputWeights.length; i++) {
             for(int j = 0; j < outputWeights[0].length; j++) {
-                change = 0.2 * outputDelta[0][0] * outputHidden[i][0];
+                change = learningRate * outputDelta[0][0] * outputHidden[0][i];
                 outputWeights[i][j] = (outputWeights[i][j] + change);
             }
         }
@@ -112,17 +120,17 @@ public class NeuralNetwork {
                 summation += outputDelta[0] * outputWeights[i][j];
             }
         }*/
-        double[][] summation = matrix.multiplication(outputDelta, outputWeights);
+        double[][] summation = matrix.multiplication(outputWeights, outputDelta);
         //Computing the delta of the hidden layer;
         for(int i = 0; i < outputHidden.length; i++) {
             for(int j = 0; j < outputHidden[0].length; j++) {
-                hiddenDelta[i][j] = outputHidden[i][j] * (1 - outputHidden[i][j]) * summation[i][j];
+                hiddenDelta[i][j] = outputHidden[i][j] * (1 - outputHidden[i][j]) * summation[j][i];
             }
         }
         //Computing the new weights of the hidden layer.
         for(int i = 0; i < hiddenWeights.length; i++)  {
             for(int j = 0; j < hiddenWeights[0].length; j++) {
-                change = 0.2 * hiddenDelta[0][j] * input[0][i];
+                change = learningRate * hiddenDelta[0][j] * input[0][i];
                 hiddenWeights[i][j] = hiddenWeights[i][j] + change;
             }
         }

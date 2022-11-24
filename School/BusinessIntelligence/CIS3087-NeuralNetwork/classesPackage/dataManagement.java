@@ -8,8 +8,8 @@ import java.util.List;
 public class dataManagement {
     public double[][] getData() throws FileNotFoundException {
         List<String[]> lines = new ArrayList<>();
-        double[][] data = new double[5][6];
-        try (BufferedReader br = new BufferedReader(new FileReader("data.csv"))) {
+        double[][] data = new double[571][6];
+        try (BufferedReader br = new BufferedReader(new FileReader("trainingData.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 lines.add(line.split(","));

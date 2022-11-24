@@ -1,5 +1,7 @@
 package classesPackage;
 
+import java.util.Random;
+
 public class Layer {
     public double[][] weights;
     public double[][] inputs, outputs;
@@ -9,9 +11,9 @@ public class Layer {
 
     public  double[][] hiddenLayer(){
         weights = new double[5][4];
-        for(int i = 0; i < 5; i ++){
-            for(int j = 0; j< 4; j++) {
-                weights[i][j] = 1 - Math.random();
+        for(int i = 0; i < weights.length; i ++){
+            for(int j = 0; j< weights[0].length; j++) {
+                weights[i][j] = (new Random().nextDouble() * (1 - -1)) + -1;
             }
         }
         return weights;
@@ -20,8 +22,8 @@ public class Layer {
     public  double[][] outputLayer(){
         weights = new double[4][1];
         for(int i = 0; i < weights.length; i ++){
-            for(int j = 0; j< weights.length; j++) {
-                weights[i][j] = 1 - Math.random();
+            for(int j = 0; j< weights[0].length; j++) {
+                weights[i][j] = (new Random().nextDouble() * (1 - -1)) + -1;
             }
         }
         return weights;

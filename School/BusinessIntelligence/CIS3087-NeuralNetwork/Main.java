@@ -11,7 +11,7 @@ import java.util.List;
 public class Main {
     public static void main(String []args) throws IOException {
 
-        //NeuralNetwork network = new NeuralNetwork(1000, 0.2, 0.2);
+        /*//NeuralNetwork network = new NeuralNetwork(1000, 0.2, 0.2);
         int[][] array1 = {{1, 2, 3, 4}};
         int[][] array2 = {{1 ,2, 3}};
 
@@ -19,6 +19,11 @@ public class Main {
             for(int j =0; j < array1[0].length; j++) {
                 System.out.println(array1[i][j] * array2[i][j]);
             }
-        }
+        }*/
+
+        //Creating a new neural network.
+        NeuralNetwork network = new NeuralNetwork(100, 0.2, 0.2);
+        //Passing the network through the feed forward algorithm.
+        network.feedForward();
     }
 }
