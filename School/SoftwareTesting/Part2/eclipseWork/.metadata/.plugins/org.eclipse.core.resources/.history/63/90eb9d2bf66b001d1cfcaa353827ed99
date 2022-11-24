@@ -35,7 +35,7 @@ GLOBAL{
                 }
             }
 
-            TRANSITIONS{		 
+            TRANSITIONS{
                 tooMany->tooMany [addUser\\noOfUsers++;System.out.println("Too many users already");]
                 tooMany->tooMany [deleteUser\noOfUsers > 6\noOfUsers--;]
                 tooMany->start [deleteUser\noOfUsers == 6\noOfUsers--;]
@@ -68,7 +68,7 @@ GLOBAL{
                 }
             }
 
-            TRANSITIONS{			%%Event\condition\action
+            TRANSITIONS{
                 tooMany->tooMany [addAccount\\noOfAccounts++;System.out.println("Too many accounts already");]
                 tooMany->tooMany [deleteAccount\noOfAccounts > 6\noOfAccounts--;]
                 tooMany->start [deleteAccount\noOfAccounts == 6\noOfAccounts--;]

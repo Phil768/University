@@ -23,8 +23,8 @@ u =u1 ;
 
 _cls_StudentBank1 _cls_inst = _cls_StudentBank1._get_cls_StudentBank1_inst( u);
 _cls_inst.u1 = u1;
-_cls_inst._call(thisJoinPoint.getSignature().toString(), 30/*deleteAccount*/);
-_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 30/*deleteAccount*/);
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 12/*deleteAccount*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 12/*deleteAccount*/);
 }
 }
 before ( User u1) : (call(* User.addAccount(..)) && target(u1) && !cflow(adviceexecution()) && !cflow(within(larva.*))  && !(within(larva.*))) {
@@ -35,8 +35,8 @@ u =u1 ;
 
 _cls_StudentBank1 _cls_inst = _cls_StudentBank1._get_cls_StudentBank1_inst( u);
 _cls_inst.u1 = u1;
-_cls_inst._call(thisJoinPoint.getSignature().toString(), 28/*addAccount*/);
-_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 28/*addAccount*/);
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 10/*addAccount*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 10/*addAccount*/);
 }
 }
 }
