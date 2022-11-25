@@ -22,7 +22,7 @@ public class Main {
         }*/
 
         //Creating a new neural network.
-        NeuralNetwork network = new NeuralNetwork(100, 0.2, 0.2);
+        NeuralNetwork network = new NeuralNetwork(10, 0.2, 0.2);
         //Passing the network through the feed forward algorithm.
         network.feedForward();
     }

@@ -70,11 +70,20 @@ public class NeuralNetwork {
                             finalOutput[i][j] = sigmoid.sigmoid(outputResult[i][j]);
                         }
                     }
+
+                    for(int i = 0; i < outputWeights.length; i++) {
+                        for(int j = 0; j < outputWeights[0].length; j++) {
+                            System.out.println(outputWeights[i][j]);
+                        }
+                    }
+                    System.out.println();
+                    System.out.println("ERROR: " + (target[0][0] - finalOutput[0][0]));
+                    System.out.println();
                     //Testing purposes.
-                    System.out.println("Fact " + y + ": ");
+                    /*System.out.println("Fact " + y + ": ");
                     System.out.println("Output: " + finalOutput[0][0]);
                     System.out.println("Target: " + target[0][0]);
-                    System.out.println();
+                    System.out.println();*/
                     //Checking the output with the error threshold.
                     for (int i = 0; i < finalOutput.length; i++) {
                         for (int j = 0; j < finalOutput[0].length; j++) {
@@ -98,26 +107,27 @@ public class NeuralNetwork {
         matrixArithmetic matrix = new matrixArithmetic();
         //Creating the required variables.
         double change = 0;
-        double[][] outputDelta = new double[finalOutput.length][finalOutput[0].length];
-        double[][] hiddenDelta = new double[outputHidden.length][outputHidden[0].length];
+        double[] outputDelta = new double[finalOutput.length];
+        double[] hiddenDelta = new double[outputHidden.length];
         //Computing the delta for each output.
         for(int i = 0; i < finalOutput.length; i++) {
             for(int j = 0; j < finalOutput[0].length; j++) {
-                outputDelta[0][0] = (finalOutput[i][j]) * (1 - finalOutput[i][j]) * (target[i][j] - finalOutput[i][j]);
+                outputDelta[i] = (finalOutput[i][j]) * (1 - finalOutput[i][j]) * (target[i][j] - finalOutput[i][j]);
             }
         }
+        //Determining the change value of the output weights.
+        change = learningRate * outputDelta[0] * outputHidden[0][0];
         //Changing the weights of the output layer.
         for(int i = 0; i < outputWeights.length; i++) {
             for(int j = 0; j < outputWeights[0].length; j++) {
-                change = learningRate * outputDelta[0][0] * outputHidden[0][i];
-                outputWeights[i][j] = (outputWeights[i][j] + change);
+                outputWeights[i][j]  += change;
             }
         }
-        double[][] summation = matrix.multiplication(outputWeights, outputDelta);
+        /*//double[][] summation = matrix.multiplication(outputWeights, outputDelta);
         //Computing the delta of the hidden layer;
         for(int i = 0; i < outputHidden.length; i++) {
             for(int j = 0; j < outputHidden[0].length; j++) {
-                hiddenDelta[i][j] = outputHidden[i][j] * (1 - outputHidden[i][j]) * summation[j][i];
+                hiddenDelta[j] = outputHidden[i][j] * (1 - outputHidden[i][j]) * summation[j][i];
             }
         }
         //Computing the new weights of the hidden layer.
@@ -126,7 +136,7 @@ public class NeuralNetwork {
                 change = learningRate * hiddenDelta[0][j] * input[0][i];
                 hiddenWeights[i][j] = hiddenWeights[i][j] + change;
             }
-        }
+        }*/
 
     }
 }
