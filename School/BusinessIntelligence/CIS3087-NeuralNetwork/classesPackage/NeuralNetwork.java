@@ -21,7 +21,9 @@ public class NeuralNetwork {
         dataManagement d = new dataManagement();
         //Creating the necessary arrays.
         double[][] data = d.getData();
-        /*>>>>>Shuffle array<<<<<*/
+        //Shuffling the content of the array.
+        Shuffle shuffle = new Shuffle();
+        data = shuffle.shuffle(data);
         //Input layer.
         double[][] input = new double[1][data[0].length - 1];
         //Target of each fact.
@@ -120,20 +122,20 @@ public class NeuralNetwork {
                 outputWeights[i][j]  += change;
             }
         }
-        /*//double[][] summation = matrix.multiplication(outputWeights, outputDelta);
+        //double[][] summation = matrix.multiplication(outputWeights, outputDelta);
         //Computing the delta of the hidden layer;
         for(int i = 0; i < outputHidden.length; i++) {
-            for(int j = 0; j < outputHidden[0].length; j++) {
-                hiddenDelta[j] = outputHidden[i][j] * (1 - outputHidden[i][j]) * (outputDelta[0] * outputWeights[j][0]));
+            for(int j = 0; j < outputHidden[0].length; j++) {                    //Summation since there is only one output neuron.
+                hiddenDelta[j] = outputHidden[i][j] * (1 - outputHidden[i][j]) * (outputDelta[0] * outputWeights[j][0]);
             }
         }
         //Computing the new weights of the hidden layer.
         for(int i = 0; i < hiddenWeights.length; i++)  {
             for(int j = 0; j < hiddenWeights[0].length; j++) {
-                change = learningRate * hiddenDelta[0][j] * input[0][i];
+                change = learningRate * hiddenDelta[j] * input[0][i];
                 hiddenWeights[i][j] = hiddenWeights[i][j] + change;
             }
-        }*/
+        }
 
     }
 }
