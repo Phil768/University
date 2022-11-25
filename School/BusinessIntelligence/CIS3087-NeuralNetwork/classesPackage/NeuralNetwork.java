@@ -76,9 +76,9 @@ public class NeuralNetwork {
                     System.out.println("Target: " + target[0][0]);
                     System.out.println();
                     //Checking the output with the error threshold.
-                    for (int i = 0; i < outputResult.length; i++) {
-                        for (int j = 0; j < outputResult[0].length; j++) {
-                            if ((target[i][j] - outputResult[i][j]) > errorThreshold) {
+                    for (int i = 0; i < finalOutput.length; i++) {
+                        for (int j = 0; j < finalOutput[0].length; j++) {
+                            if ((target[i][j] - finalOutput[i][j]) > errorThreshold) {
                                 backwardsPropagation(target, finalOutput, outputHidden, input);
                                 badFacts++;
                             } else {
@@ -113,13 +113,6 @@ public class NeuralNetwork {
                 outputWeights[i][j] = (outputWeights[i][j] + change);
             }
         }
-        //Computing the summation of output layer weights.
-        /*double summation = 0;
-        for(int i = 0; i < outputWeights.length; i++) {
-            for(int j = 0; j < outputWeights[0].length; j++) {
-                summation += outputDelta[0] * outputWeights[i][j];
-            }
-        }*/
         double[][] summation = matrix.multiplication(outputWeights, outputDelta);
         //Computing the delta of the hidden layer;
         for(int i = 0; i < outputHidden.length; i++) {
