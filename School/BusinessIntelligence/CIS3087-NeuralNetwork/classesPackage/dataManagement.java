@@ -31,12 +31,12 @@ public class dataManagement {
 
     }
 
-    public void writeData(double[][] data) throws IOException {
+    public void writeData(double[] data) throws IOException {
         FileWriter writer = new FileWriter("data.csv");
-        writer.write("Epoch, Error\n"); //Write headers
+        writer.write("Epoch, Bad Facts (%)\n"); //Write headers
 
         for (int i =0; i < data.length; i++) {
-            writer.write(String.valueOf(i + 1)+","+String.valueOf(data[i])+"\n");
+            writer.write(String.valueOf(i + 1)+","+ data[i] +"\n");
         }
     }
 }
