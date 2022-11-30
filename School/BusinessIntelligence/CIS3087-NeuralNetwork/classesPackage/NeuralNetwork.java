@@ -115,12 +115,11 @@ public class NeuralNetwork {
                 break;
             }
         }
+        //Writing the error array to a CSV file.
         d.writeData(error);
     }
 
     public static void backwardsPropagation(double target, double finalOutput, double[][] outputHidden, double[][] input) {
-        //Creating a new matrix arithmetic object.
-        matrixArithmetic matrix = new matrixArithmetic();
         //Creating the required variables.
         double change = 0;
         double outputDelta = 0;
@@ -138,7 +137,6 @@ public class NeuralNetwork {
         //Computing the delta of the hidden layer;
         for(int i = 0; i < outputHidden[0].length; i++) {                 //Summation since there is only one output neuron.
             hiddenDelta[i] = outputHidden[0][i] * (1 - outputHidden[0][i]) * (outputDelta * outputWeights[i][0]);
-
         }
         //Computing the new weights of the hidden layer.
         for(int i = 0; i < hiddenWeights.length; i++)  {
