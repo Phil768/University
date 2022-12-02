@@ -13,7 +13,7 @@ public class Layer {
         weights = new double[5][4];
         for(int i = 0; i < weights.length; i ++){
             for(int j = 0; j< weights[0].length; j++) {
-                weights[i][j] = (new Random().nextDouble() * (1 - -1)) + -1;
+                weights[i][j] = Math.random() * (1 - -1) + -1;
             }
         }
         return weights;
@@ -23,7 +23,7 @@ public class Layer {
         weights = new double[4][1];
         for(int i = 0; i < weights.length; i ++){
             for(int j = 0; j< weights[0].length; j++) {
-                weights[i][j] = (new Random().nextDouble() * (1 - -1)) + -1;
+                weights[i][j] = Math.random() * (1 - -1) + -1;
             }
         }
         return weights;

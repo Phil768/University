@@ -74,7 +74,7 @@ public class NeuralNetwork {
                     }
                 }
 
-               /* System.out.println("Hidden Weights: ");
+               System.out.println("Hidden Weights: ");
                 for(int i = 0; i < hiddenWeights.length; i++) {
                     for(int j = 0; j < hiddenWeights[0].length; j++) {
                         System.out.print(hiddenWeights[i][j] + " ");
@@ -87,18 +87,17 @@ public class NeuralNetwork {
                     for(int j = 0; j < outputWeights[0].length; j++) {
                         System.out.print(outputWeights[i][j] + " ");
                     }
-                    //System.out.println();
+                    System.out.println();
                 }
                 System.out.println();
                 System.out.println("ERROR: " + (target - finalOutput));
-                System.out.println();*/
+                System.out.println();
                 //Testing purposes.
-                System.out.println("Fact " + y + ": ");
+                /*System.out.println("Fact " + y + ": ");
                 System.out.println("Output: " + finalOutput);
                 System.out.println("Target: " + target);
-                System.out.println();
+                System.out.println();*/
                 //Checking the output with the error threshold.
-                double num = target - finalOutput;
                 if (Math.abs(target - finalOutput) > errorThreshold) {
                     backwardsPropagation(target, finalOutput, outputHidden, input);
                     badFacts++;
@@ -128,9 +127,9 @@ public class NeuralNetwork {
         outputDelta = (finalOutput) * (1 - finalOutput) * (target - finalOutput);
         //Changing the weights of the output layer.
         for(int i = 0; i < outputWeights.length; i++) {
-            //Determining the change value of the output weights.
-            change = learningRate * outputDelta * outputHidden[0][i];
             for(int j = 0; j < outputWeights[0].length; j++) {
+                //Determining the change value of the output weights.
+                change = learningRate * outputDelta * outputHidden[0][i];
                 outputWeights[i][j]  += change;
             }
         }
