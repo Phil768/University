@@ -2,6 +2,8 @@ package classesPackage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NeuralNetwork {
     public static double learningRate, errorThreshold;
@@ -21,9 +23,9 @@ public class NeuralNetwork {
         //Creating a new data object to get the required data from file.
         dataManagement d = new dataManagement();
         //Creating the necessary arrays.
-        double[][] data = d.getData();
-        //Creating an array to hold all the error data.
-        double[] error = new double[epochs];
+        double[][] data = d.getTrainingData();
+        //Creating an empty list to add the errors dynamically and not have empty space.
+        List<Double> errors = new ArrayList<Double>();
         //Shuffling the content of the array.
         Shuffle shuffle = new Shuffle();
         data = shuffle.shuffle(data);
@@ -42,7 +44,6 @@ public class NeuralNetwork {
             //Setting the bad and good facts to after the start of each epoch.
             badFacts = 0;
             goodFacts = 0;
-            System.out.println(">>Epoch " + (x+1) + ": ");
             //Iterating through all the facts in each epoch.
             for (int y = 1; y < data.length; y++) {
                 //Populating the Input layer for each fact.
@@ -73,30 +74,6 @@ public class NeuralNetwork {
                         finalOutput = sigmoid.sigmoid(outputResult[i][j]);
                     }
                 }
-
-               System.out.println("Hidden Weights: ");
-                for(int i = 0; i < hiddenWeights.length; i++) {
-                    for(int j = 0; j < hiddenWeights[0].length; j++) {
-                        System.out.print(hiddenWeights[i][j] + " ");
-                    }
-                    System.out.println();
-                }
-
-                System.out.println("Output Weights: ");
-                for(int i = 0; i < outputWeights.length; i++) {
-                    for(int j = 0; j < outputWeights[0].length; j++) {
-                        System.out.print(outputWeights[i][j] + " ");
-                    }
-                    System.out.println();
-                }
-                System.out.println();
-                System.out.println("ERROR: " + (target - finalOutput));
-                System.out.println();
-                //Testing purposes.
-                /*System.out.println("Fact " + y + ": ");
-                System.out.println("Output: " + finalOutput);
-                System.out.println("Target: " + target);
-                System.out.println();*/
                 //Checking the output with the error threshold.
                 if (Math.abs(target - finalOutput) > errorThreshold) {
                     backwardsPropagation(target, finalOutput, outputHidden, input);
@@ -106,16 +83,24 @@ public class NeuralNetwork {
                     goodFacts++;
                 }
             }
-            //Populating the error data array.
+            //Calculating the percentage of bad facts in the current epoch.
             double n = ((double)badFacts/(double)(data.length-1)) * 100;
-            error[x] = n;
+            //Adding the percentage to the list.
+            errors.add(n);
             //Training stops when we have an epoch which has no bad facts and the weights are saved.
             if(badFacts == 0) {
                 break;
             }
         }
+        //Creating an array to hold all the error data.
+        double[] error = new double[errors.size()];
+        //Converting the list to an array.
+        for(int i = 0; i < errors.size(); i++)
+        {
+            error[i] = errors.get(i);
+        }
         //Writing the error array to a CSV file.
-        d.writeData(error);
+        d.writeTrainingData(error);
     }
 
     public static void backwardsPropagation(double target, double finalOutput, double[][] outputHidden, double[][] input) {
@@ -144,5 +129,74 @@ public class NeuralNetwork {
                 hiddenWeights[i][j] += change;
             }
         }
+    }
+
+    public void test() throws IOException {
+        //Creating a new data object to get the required data from file.
+        dataManagement d = new dataManagement();
+        //Creating the necessary arrays.
+        double[][] data = d.getTestData();
+        //Input layer.
+        double[][] input = new double[1][data[0].length - 1];
+        //Target of each fact.
+        double target = 0;
+        //Creating two lists in order to store the final output and the target dynamically.
+        List<Double> Predicted = new ArrayList<Double>();
+        List<Double> Actual = new ArrayList<Double>();
+        //Creating a new sigmoid object.
+        sigmoidFunction sigmoid = new sigmoidFunction();
+        //Creating a count to hold the number of bad facts.
+        int goodFacts = 0;
+        //Iterating through all the facts in each epoch.
+        for (int y = 1; y < data.length; y++) {
+            //Populating the Input layer for each fact.
+            for(int z = 0; z < data[0].length - 1 ; z++){
+                input[0][z] = data[y][z];
+            }
+            //Determining the target value of each fact.
+            target = data[y][data[0].length - 1];
+            //Creating a new matrix object to calculate the required arithmetic.
+            matrixArithmetic multiplication = new matrixArithmetic();
+            //Multiplying the input by the weights of the hidden layer.
+            double[][] hiddenResult = multiplication.multiplication(input, hiddenWeights);
+            //The output of the hidden layer will become the input of the output.
+            double[][] outputHidden = new double[input.length][hiddenWeights[0].length];
+            //Calculating the sigmoid of each weight summation.
+            for (int i = 0; i < outputHidden.length; i++) {
+                for (int j = 0; j < outputHidden[0].length; j++) {
+                    outputHidden[i][j] = sigmoid.sigmoid(hiddenResult[i][j]);
+                }
+            }
+            //Multiplying the output from the hidden layer with the weights of the output layer.
+            double[][] outputResult = multiplication.multiplication(outputHidden, outputWeights);
+            //Creating new array to store the final output.
+            double finalOutput = 0;
+            //Passing the summation fo the weights from the output layer to the sigmoid function.
+            for (int i = 0; i < outputResult.length; i++) {
+                for (int j = 0; j < outputResult[0].length; j++) {
+                    finalOutput = sigmoid.sigmoid(outputResult[i][j]);
+                }
+            }
+            //Incrementing the number of good facts in order to calculate the overall accuracy.
+            if((Math.abs(target - finalOutput) < errorThreshold)) {
+                goodFacts++;
+            }
+            //Adding the data to the lists.
+            Predicted.add(finalOutput);
+            Actual.add(target);
+        }
+        //Dividing the number of good facts by the total number of facts and multiplying everything by 100 to get the accuracy percentage.
+        double accuracy = (double)goodFacts/(double)data.length * 100;
+        //Creating new arrays to store the predictions and actual output.
+        double[] predicted = new double[Predicted.size()];
+        double[] actual = new double[Actual.size()];
+        //Converting the list to an array.
+        for(int i = 0; i < Predicted.size(); i++)
+        {
+            predicted[i] = Predicted.get(i);
+            actual[i] = Actual.get(i);
+        }
+        //Writing the data to a CSV file.
+        d.writeTestData(predicted, actual, accuracy);
     }
 }
