@@ -45,7 +45,7 @@ public class NeuralNetwork {
             badFacts = 0;
             goodFacts = 0;
             //Iterating through all the facts in each epoch.
-            for (int y = 1; y < data.length; y++) {
+            for(int y = 0; y < data.length; y++) {
                 //Populating the Input layer for each fact.
                 for(int z = 0; z < data[0].length - 1 ; z++){
                     input[0][z] = data[y][z];
@@ -84,7 +84,7 @@ public class NeuralNetwork {
                 }
             }
             //Calculating the percentage of bad facts in the current epoch.
-            double n = ((double)badFacts/(double)(data.length-1)) * 100;
+            double n = ((double)badFacts/(double)(data.length)) * 100;
             //Adding the percentage to the list.
             errors.add(n);
             //Training stops when we have an epoch which has no bad facts and the weights are saved.
@@ -148,7 +148,7 @@ public class NeuralNetwork {
         //Creating a count to hold the number of bad facts.
         int goodFacts = 0;
         //Iterating through all the facts in each epoch.
-        for (int y = 1; y < data.length; y++) {
+        for (int y = 0; y < data.length; y++) {
             //Populating the Input layer for each fact.
             for(int z = 0; z < data[0].length - 1 ; z++){
                 input[0][z] = data[y][z];
