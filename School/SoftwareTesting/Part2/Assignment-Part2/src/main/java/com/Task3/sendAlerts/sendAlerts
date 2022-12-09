@@ -1,0 +1,16 @@
+States:
+- scraper (starting state)
+- badState
+- MarketAlertUM
+
+Variables:
+- goodAlert
+- badRequest
+- retry
+- goodResponse
+
+Transitions:
+scraper -> badState \ sendBadApiRequest \ badRequest = true.
+badState -> scraper \ retry \ retry = true; badRequest = false;
+scraper -> MarketAlertUM \ sendGoodApiRequest \ goodAlert = true.
+MarketAlertUM -> Scraper \ sendResponse \ goodResponse = true.

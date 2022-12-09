@@ -12,7 +12,7 @@ import java.util.List;
 public class Main {
     public static void main(String []args) throws IOException {
         //Creating a new neural network.
-        NeuralNetwork network = new NeuralNetwork(1000, 0.2, 0.2);
+        NeuralNetwork network = new NeuralNetwork(500, 0.5, 0.5);
         //Passing the network through the feed forward algorithm in order to train.
         network.feedForward();
         //Passing the test data through the acquired trained weights.

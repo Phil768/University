@@ -1,0 +1,18 @@
+States:
+- MarketAlertUM
+- Login
+- Blocked
+- Alerts
+
+Variables:
+- loginRequest
+- badLogin
+- goodLogin
+- unlockLogin
+- viewRequest
+
+Transitions:
+MarketAlertUM -> Login \ requestLogin \ loginRequest = true.
+Login -> Blocked \ Login \ badLogin = true; viewRequest = false; locked = true
+Blocked -> Login \ Unlock \ unlockLogin = true; locked = false
+Login -> Alerts \ viewAlerts \ goodLogin = true; viewRequest = true
