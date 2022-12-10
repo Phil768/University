@@ -2,6 +2,6 @@ package com.Task3.sendAlerts.enums;
 
 public enum SendStateEnum {
     SCRAPER,
-    BADSTATE,
-    MARKETALERTUM,
+    BAD_STATE,
+    MARKET_ALERT_UM,
 }
