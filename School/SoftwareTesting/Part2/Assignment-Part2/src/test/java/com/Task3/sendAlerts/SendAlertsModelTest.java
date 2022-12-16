@@ -20,6 +20,7 @@ public class SendAlertsModelTest implements FsmModel {
     boolean scraping = true;
     boolean badRequest = false;
     boolean goodAlert = false;
+    int alerts = 0;
 
     //Getting the current state of the FSM.
     @Override
@@ -35,6 +36,7 @@ public class SendAlertsModelTest implements FsmModel {
         scraping = true;
         badRequest = false;
         goodAlert = false;
+        alerts = 0;
         stateEnum = SendStateEnum.SCRAPER;
     }
 
@@ -44,10 +46,26 @@ public class SendAlertsModelTest implements FsmModel {
         sut.sendBadApiRequest();
 
         badRequest = true;
+        scraping = false;
         stateEnum = SendStateEnum.BAD_STATE;
         //Testing that we have moved from the scraper to the bad state.
         Assert.assertEquals("The model's bad state doesn't match the System-under-test's state", badRequest, sut.isInBadState());
+        Assert.assertEquals("The model's bad state doesn't match the System-under-test's state", scraping, sut.isInScraper());
     }
+
+    public boolean maximumAlertsGuard(){return getState().equals(SendStateEnum.SCRAPER);}
+    public @Action void maximumAlerts(){
+        //Setting the number alerts to exceed the maximum.
+        sut.maximumAlerts();
+
+        badRequest = true;
+        scraping = false;
+        stateEnum = SendStateEnum.BAD_STATE;
+        //Testing that we have moved from the scraper to the bad state.
+        Assert.assertEquals("The model's bad state doesn't match the System-under-test's state", badRequest, sut.isInBadState());
+        Assert.assertEquals("The model's bad state doesn't match the System-under-test's state", scraping, sut.isInScraper());
+    }
+
     public boolean returnToScraperGuard(){return getState().equals(SendStateEnum.BAD_STATE);}
     public @Action void returnToScraper(){
         //Retry sending the request.,
