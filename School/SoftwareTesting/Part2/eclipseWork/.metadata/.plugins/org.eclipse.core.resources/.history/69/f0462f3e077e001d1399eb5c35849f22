@@ -1,0 +1,12 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% The following property has 3 levels: it monitors that in the bank
+%% system there are no more than 5 users, it checks that for every
+%% user there are no more than 5 accounts, and finally that for each
+%% account there are no more than 5 transactions.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+GLOBAL{
+	
+}

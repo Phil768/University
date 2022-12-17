@@ -1,0 +1,25 @@
+package main;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class simulateInteraction {
+	static WebDriver driver;
+	@SuppressWarnings("deprecation")
+	public static void main(String []args){
+		System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/Part2/chromedriver.exe");
+		//Create a new Chrome driver object.
+        driver = new ChromeDriver();
+        //Maximise the window to make sure that all the elements are displayed properly.
+        driver.manage().window().maximize();
+        //Navigating to the marketAlert site.
+        driver.get("https://www.marketalertum.com/");
+        //Waiting for the site to fully load.
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        //Quitting the site when finished.
+        driver.quit();
+	}
+
+}

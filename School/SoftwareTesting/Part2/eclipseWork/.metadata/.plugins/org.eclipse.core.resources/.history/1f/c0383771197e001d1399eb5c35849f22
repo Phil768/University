@@ -1,0 +1,18 @@
+package main;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class webDriverTest {
+	static WebDriver driver;
+	public static void main(String []args){
+		System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/Part2/chromedriver.exe");
+		//Create a new Chrome driver object.
+        driver = new ChromeDriver();
+        //Maximise the window to make sure that all the elements are displayed properly.
+        driver.manage().window().maximize();
+        //Navigating to the marketAlert site.
+        driver.get("https://www.marketalertum.com/");
+	}
+
+}

@@ -4,12 +4,12 @@ public class sendAlertsOperator {
     private boolean scraping = true;//States that we are currently in the SCRAPER state.
     private boolean badRequest = false;//States that we are currently in the BAD_STATE state.
     private boolean goodAlert = false;//States that we are currently in the MARKET_ALERT_UM state.
-    private int alerts = 0;//States the number of alerts to upload to the website.(Needed to test the limit which is 5) /*Set alerts to boolean to better check?*/
+    private boolean alerts = false;//States if the maximum number of alerts have been exceeded (< 5 -> false, > 5 -> true).
 
     //When the SUT sends a bad API request.
     void sendBadApiRequest(){
         //Checking that we are not in any other state.
-        if (!(badRequest || goodAlert) || alerts > 5) {
+        if (!(badRequest || goodAlert || alerts)) {
             //Stating that we are currently in the BAD_STATE.
             badRequest = true;
             //Stating that we have left the SCRAPER state.
@@ -27,7 +27,7 @@ public class sendAlertsOperator {
             //Stating that we are not in the bad state anymore.
             badRequest = false;
             //Resets the alerts since the process needs to start from the beginning once again.
-            alerts = 0;
+            alerts = false;
         }else {
             throw new IllegalStateException();
         }
@@ -37,7 +37,7 @@ public class sendAlertsOperator {
         //Checking that we are currently in the SCRAPER state.
         if(scraping){
             //Exceeding the number of maximum alerts.
-            alerts = 6;
+            alerts = true;
             badRequest = true;
             scraping = false;
         }
@@ -47,7 +47,7 @@ public class sendAlertsOperator {
         //Checking that we do mot have a bad request pending(Not crucial but can be covered).
         if (!badRequest) {
             //Defining that the number of alerts is less than the maximum.
-            alerts = 4;
+            alerts = false;
             //Stating that we are currently in the MARKET_ALERT_UM state.
             goodAlert = true;
             //Stating that we are not in the SCRAPER state anymore.
@@ -72,6 +72,6 @@ public class sendAlertsOperator {
     boolean isInScraper() {return scraping;}//Checking if we are in the SCRAPER state.
     boolean isInBadState(){ return badRequest;}//Checking if we are in the BAD_STATE
     boolean isInMarketAlert(){ return goodAlert;}//Checking if we are in the MARKET_ALERT_UM state.
-    int numOfAlerts(){ return alerts;}//Checking the number of alerts that the system has.
+    boolean alertsState(){ return alerts;}//Checking if the maximum alerts have been exceeded.
 }
 

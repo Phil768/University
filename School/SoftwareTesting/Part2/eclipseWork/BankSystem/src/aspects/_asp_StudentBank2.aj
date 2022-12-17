@@ -25,8 +25,8 @@ u =a .owner ;
 
 _cls_StudentBank2 _cls_inst = _cls_StudentBank2._get_cls_StudentBank2_inst( a,u);
 _cls_inst.a1 = a1;
-_cls_inst._call(thisJoinPoint.getSignature().toString(), 16/*deleteTransaction*/);
-_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 16/*deleteTransaction*/);
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 34/*deleteTransaction*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 34/*deleteTransaction*/);
 }
 }
 before ( Account a1) : (call(* Account.addTransaction(..)) && target(a1) && !cflow(adviceexecution()) && !cflow(within(larva.*))  && !(within(larva.*))) {
@@ -39,8 +39,8 @@ u =a .owner ;
 
 _cls_StudentBank2 _cls_inst = _cls_StudentBank2._get_cls_StudentBank2_inst( a,u);
 _cls_inst.a1 = a1;
-_cls_inst._call(thisJoinPoint.getSignature().toString(), 14/*addTransaction*/);
-_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 14/*addTransaction*/);
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 32/*addTransaction*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 32/*addTransaction*/);
 }
 }
 }
