@@ -65,3 +65,63 @@ org.eclipse.jdt.internal.compiler.problem.AbortCompilation:
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+!SESSION 2022-12-21 09:55:04.099 -----------------------------------------------
+eclipse.buildId=4.4.1.M20140925-0400
+java.version=1.8.0_352
+java.vendor=Temurin
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_GB
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2022-12-21 09:55:09.473
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:18.599
+!MESSAGE Compiler configuration for project BadLogin doesn't know previous state, so assuming EVERYTHING has changed.
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:19.672
+!MESSAGE ===========================================================================================
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:19.688
+!MESSAGE Build kind = AUTOBUILD
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.281
+!MESSAGE Project=BadLogin, kind of build requested=Incremental AspectJ compilation
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.313
+!MESSAGE Timer event: 16ms: Flush included source file cache
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.313
+!MESSAGE Copying added file output_logins.txt
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.360
+!MESSAGE CoreCompilerConfiguration for project BadLogin registered a configuration change: [PROJECTSOURCERESOURCES_CHANGED]
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.360
+!MESSAGE Timer event: 47ms: Check delta
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.500
+!MESSAGE Timer event: 140ms: Looking for and marking configuration changes in BadLogin
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.500
+!MESSAGE 	Configuration changes found: false
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.500
+!MESSAGE build: Examined delta - no source file or classpath changes for project BadLogin
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.500
+!MESSAGE Compiler configuration for project BadLogin has been read by compiler.  Resetting.
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.500
+!MESSAGE      Configuration was [PROJECTSOURCEFILES_CHANGED, JAVAOPTIONS_CHANGED, ASPECTPATH_CHANGED, CLASSPATH_CHANGED, INPATH_CHANGED, NONSTANDARDOPTIONS_CHANGED, OUTJAR_CHANGED, PROJECTSOURCERESOURCES_CHANGED, OUTPUTDESTINATIONS_CHANGED, INJARS_CHANGED]
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.531
+!MESSAGE Resetting list of modified source files.  Was null
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.719
+!MESSAGE Timer event: 359ms: Look for source/resource changes
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.719
+!MESSAGE No source/resource changes found, exiting build
+
+!ENTRY org.eclipse.ajdt.core 1 0 2022-12-21 09:55:21.719
+!MESSAGE Timer event: 2047ms: Total time spent in AJBuilder.build()

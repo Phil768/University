@@ -1,2 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.apache.hc.client5.http.classic.methods.HttpGet"/>
+<fullyQualifiedTypeName name="org.apache.hc.client5.http.impl.classic.CloseableHttpClient"/>
+<fullyQualifiedTypeName name="org.apache.hc.client5.http.impl.classic.HttpClients"/>
+<fullyQualifiedTypeName name="sun.net.www.http.HttpClient"/>
+<fullyQualifiedTypeName name="org.apache.hc.core5.http.HttpRequest"/>
+<fullyQualifiedTypeName name="org.apache.hc.client5.http.impl.classic.CloseableHttpResponse"/>
+<fullyQualifiedTypeName name="org.apache.hc.core5.http.io.entity.EntityUtils"/>
+<fullyQualifiedTypeName name="org.apache.hc.client5.http.entity.mime.Header"/>
+<fullyQualifiedTypeName name="org.apache.hc.core5.http.HttpEntity"/>
+<fullyQualifiedTypeName name="java.net.HttpURLConnection"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.WebDriver"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.chrome.ChromeDriver"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="com.squareup.okhttp.OkHttpClient"/>
+<fullyQualifiedTypeName name="com.squareup.okhttp.RequestBody"/>
+<fullyQualifiedTypeName name="org.apache.hc.client5.http.fluent.Form"/>
+<fullyQualifiedTypeName name="com.squareup.okhttp.Request"/>
+<fullyQualifiedTypeName name="javax.xml.ws.Response"/>
+<fullyQualifiedTypeName name="okhttp3.RequestBody"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.By"/>
+<fullyQualifiedTypeName name="jdk.nashorn.internal.parser.JSONParser"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonElement"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonParser"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonPrimitive"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonObject"/>
+</qualifiedTypeNameHistroy>

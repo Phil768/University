@@ -1,0 +1,33 @@
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>marketAlertUM
+Login reuqest has been recorded
+[viewAlertsProperty]MOVED ON METHODCALL: void main.Login.loginRequest() TO STATE::> login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+Bad login observed
+[viewAlertsProperty]MOVED ON METHODCALL: void main.Login.badLogin() TO STATE::> login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+Entering blocked state
+[viewAlertsProperty]MOVED ON METHODCALL: void main.Login.badLogin() TO STATE::> blocked
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>blocked
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>blocked
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>blocked
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>blocked
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>blocked
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>blocked
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>blocked
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>blocked
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>blocked
+Back to the login state
+[viewAlertsProperty]MOVED ON METHODCALL: void main.Login.setLocked(boolean) TO STATE::> login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+Good login recorded
+[viewAlertsProperty]MOVED ON METHODCALL: void main.Login.goodLogin() TO STATE::> login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+Viewing alerts!
+[viewAlertsProperty]MOVED ON METHODCALL: void main.Login.viewAlerts() TO STATE::> alerts
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>alerts
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>alerts
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>alerts

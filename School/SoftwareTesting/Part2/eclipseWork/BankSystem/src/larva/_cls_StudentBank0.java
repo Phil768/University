@@ -95,7 +95,7 @@ else if (no_automata < 0)
 }catch(Exception ex){ex.printStackTrace();}
 }
 
-int _state_id_Users = 17;
+int _state_id_Users = 12;
 
 public void _performLogic_Users(String _info, int... _event) {
 
@@ -103,52 +103,52 @@ _cls_StudentBank0.pw.println("[Users]AUTOMATON::> Users("+") STATE::>"+ _string_
 _cls_StudentBank0.pw.flush();
 
 if (0==1){}
-else if (_state_id_Users==17){
+else if (_state_id_Users==12){
 		if (1==0){}
-		else if ((_occurredEvent(_event,26/*deleteUser*/)) && (noOfUsers ==0 )){
+		else if ((_occurredEvent(_event,28/*deleteUser*/)) && (noOfUsers ==0 )){
 		_cls_StudentBank0.pw .println ("BAD State!!!");
 
-		_state_id_Users = 16;//moving to state badDelete
+		_state_id_Users = 11;//moving to state badDelete
 		_goto_Users(_info);
 		}
-		else if ((_occurredEvent(_event,24/*addUser*/)) && (noOfUsers ==5 )){
+		else if ((_occurredEvent(_event,26/*addUser*/)) && (noOfUsers ==5 )){
 		noOfUsers ++;
 
-		_state_id_Users = 15;//moving to state tooMany
+		_state_id_Users = 10;//moving to state tooMany
 		_goto_Users(_info);
 		}
-		else if ((_occurredEvent(_event,24/*addUser*/))){
+		else if ((_occurredEvent(_event,26/*addUser*/))){
 		noOfUsers ++;
 
-		_state_id_Users = 17;//moving to state start
+		_state_id_Users = 12;//moving to state start
 		_goto_Users(_info);
 		}
-		else if ((_occurredEvent(_event,26/*deleteUser*/))){
+		else if ((_occurredEvent(_event,28/*deleteUser*/))){
 		noOfUsers --;
 
-		_state_id_Users = 17;//moving to state start
+		_state_id_Users = 12;//moving to state start
 		_goto_Users(_info);
 		}
 }
-else if (_state_id_Users==15){
+else if (_state_id_Users==10){
 		if (1==0){}
-		else if ((_occurredEvent(_event,24/*addUser*/))){
+		else if ((_occurredEvent(_event,26/*addUser*/))){
 		noOfUsers ++;
 _cls_StudentBank0.pw .println ("Too many users already");
 
-		_state_id_Users = 15;//moving to state tooMany
+		_state_id_Users = 10;//moving to state tooMany
 		_goto_Users(_info);
 		}
-		else if ((_occurredEvent(_event,26/*deleteUser*/)) && (noOfUsers >6 )){
+		else if ((_occurredEvent(_event,28/*deleteUser*/)) && (noOfUsers >6 )){
 		noOfUsers --;
 
-		_state_id_Users = 15;//moving to state tooMany
+		_state_id_Users = 10;//moving to state tooMany
 		_goto_Users(_info);
 		}
-		else if ((_occurredEvent(_event,26/*deleteUser*/)) && (noOfUsers ==6 )){
+		else if ((_occurredEvent(_event,28/*deleteUser*/)) && (noOfUsers ==6 )){
 		noOfUsers --;
 
-		_state_id_Users = 17;//moving to state start
+		_state_id_Users = 12;//moving to state start
 		_goto_Users(_info);
 		}
 }
@@ -161,9 +161,9 @@ _cls_StudentBank0.pw.flush();
 
 public String _string_Users(int _state_id, int _mode){
 switch(_state_id){
-case 17: if (_mode == 0) return "start"; else return "start";
-case 15: if (_mode == 0) return "tooMany"; else return "!!!SYSTEM REACHED BAD STATE!!! tooMany "+new _BadStateExceptionStudentBank().toString()+" ";
-case 16: if (_mode == 0) return "badDelete"; else return "!!!SYSTEM REACHED BAD STATE!!! badDelete "+new _BadStateExceptionStudentBank().toString()+" ";
+case 12: if (_mode == 0) return "start"; else return "start";
+case 10: if (_mode == 0) return "tooMany"; else return "!!!SYSTEM REACHED BAD STATE!!! tooMany "+new _BadStateExceptionStudentBank().toString()+" ";
+case 11: if (_mode == 0) return "badDelete"; else return "!!!SYSTEM REACHED BAD STATE!!! badDelete "+new _BadStateExceptionStudentBank().toString()+" ";
 default: return "!!!SYSTEM REACHED AN UNKNOWN STATE!!!";
 }
 }

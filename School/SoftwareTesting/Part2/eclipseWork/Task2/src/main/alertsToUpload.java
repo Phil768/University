@@ -49,7 +49,7 @@ public class alertsToUpload {
 				);
 		break;
 		
-		default : System.out.println("Wrong choise!");
+		default : System.out.println("Wrong choice!");
 		}
 		
 		return alert;

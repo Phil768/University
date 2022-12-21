@@ -1,7 +1,6 @@
 package main;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,8 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class simulateInteraction {
 	static WebDriver driver;
-	@SuppressWarnings("deprecation")
+	
 	public static void main(String []args){
+		//simulate();
+	}
+	public void simulate(){
 		System.setProperty("webdriver.chrome.driver", "/Users/phili/OneDrive/Desktop/University/School/SoftwareTesting/Part2/chromedriver.exe");
 		//Create a new Chrome driver object.
         driver = new ChromeDriver();
@@ -19,8 +21,14 @@ public class simulateInteraction {
         driver.manage().window().maximize();
         //Navigating to the marketAlert site.
         driver.get("https://www.marketalertum.com/");
-        //Waiting for the site to fully load.
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        ///Waiting for the site to fully load.
+		//driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         //Storing the navigation elements in a list of web elements.
         List<WebElement> navigation = driver.findElements(By.xpath("//a[@class='nav-link text-dark']"));
         //Clicking the third option which is the 'Login' option.
@@ -32,9 +40,15 @@ public class simulateInteraction {
         //Storing the submit button in a web element object.
         WebElement submit = driver.findElement(By.xpath("/html/body/div/main/form/input[2]"));
         //Submitting the ID field with the submit button.
-         submit.submit();
+        submit.submit();
       	//Waiting for the site to fully load.
-         driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         //Quitting the site when finished.
         driver.quit();
 	}

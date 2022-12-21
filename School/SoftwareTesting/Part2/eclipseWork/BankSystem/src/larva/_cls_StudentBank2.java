@@ -89,7 +89,7 @@ else if (no_automata < 0)
 }catch(Exception ex){ex.printStackTrace();}
 }
 
-int _state_id_Transactions = 23;
+int _state_id_Transactions = 18;
 
 public void _performLogic_Transactions(String _info, int... _event) {
 
@@ -97,52 +97,52 @@ _cls_StudentBank0.pw.println("[Transactions]AUTOMATON::> Transactions("+a + " " 
 _cls_StudentBank0.pw.flush();
 
 if (0==1){}
-else if (_state_id_Transactions==23){
+else if (_state_id_Transactions==18){
 		if (1==0){}
-		else if ((_occurredEvent(_event,34/*deleteTransaction*/)) && (noOfTransactions ==0 )){
+		else if ((_occurredEvent(_event,36/*deleteTransaction*/)) && (noOfTransactions ==0 )){
 		_cls_StudentBank0.pw .println ("BAD State!!!");
 
-		_state_id_Transactions = 22;//moving to state badDelete
+		_state_id_Transactions = 17;//moving to state badDelete
 		_goto_Transactions(_info);
 		}
-		else if ((_occurredEvent(_event,32/*addTransaction*/)) && (noOfTransactions ==5 )){
+		else if ((_occurredEvent(_event,34/*addTransaction*/)) && (noOfTransactions ==5 )){
 		noOfTransactions ++;
 
-		_state_id_Transactions = 21;//moving to state tooMany
+		_state_id_Transactions = 16;//moving to state tooMany
 		_goto_Transactions(_info);
 		}
-		else if ((_occurredEvent(_event,32/*addTransaction*/))){
+		else if ((_occurredEvent(_event,34/*addTransaction*/))){
 		noOfTransactions ++;
 
-		_state_id_Transactions = 23;//moving to state start
+		_state_id_Transactions = 18;//moving to state start
 		_goto_Transactions(_info);
 		}
-		else if ((_occurredEvent(_event,34/*deleteTransaction*/))){
+		else if ((_occurredEvent(_event,36/*deleteTransaction*/))){
 		noOfTransactions --;
 
-		_state_id_Transactions = 23;//moving to state start
+		_state_id_Transactions = 18;//moving to state start
 		_goto_Transactions(_info);
 		}
 }
-else if (_state_id_Transactions==21){
+else if (_state_id_Transactions==16){
 		if (1==0){}
-		else if ((_occurredEvent(_event,32/*addTransaction*/))){
+		else if ((_occurredEvent(_event,34/*addTransaction*/))){
 		noOfTransactions ++;
 _cls_StudentBank0.pw .println ("Too many transactions already");
 
-		_state_id_Transactions = 21;//moving to state tooMany
+		_state_id_Transactions = 16;//moving to state tooMany
 		_goto_Transactions(_info);
 		}
-		else if ((_occurredEvent(_event,34/*deleteTransaction*/)) && (noOfTransactions >6 )){
+		else if ((_occurredEvent(_event,36/*deleteTransaction*/)) && (noOfTransactions >6 )){
 		noOfTransactions --;
 
-		_state_id_Transactions = 21;//moving to state tooMany
+		_state_id_Transactions = 16;//moving to state tooMany
 		_goto_Transactions(_info);
 		}
-		else if ((_occurredEvent(_event,34/*deleteTransaction*/)) && (noOfTransactions ==6 )){
+		else if ((_occurredEvent(_event,36/*deleteTransaction*/)) && (noOfTransactions ==6 )){
 		noOfTransactions --;
 
-		_state_id_Transactions = 23;//moving to state start
+		_state_id_Transactions = 18;//moving to state start
 		_goto_Transactions(_info);
 		}
 }
@@ -155,9 +155,9 @@ _cls_StudentBank0.pw.flush();
 
 public String _string_Transactions(int _state_id, int _mode){
 switch(_state_id){
-case 23: if (_mode == 0) return "start"; else return "start";
-case 21: if (_mode == 0) return "tooMany"; else return "!!!SYSTEM REACHED BAD STATE!!! tooMany "+new _BadStateExceptionStudentBank().toString()+" ";
-case 22: if (_mode == 0) return "badDelete"; else return "!!!SYSTEM REACHED BAD STATE!!! badDelete "+new _BadStateExceptionStudentBank().toString()+" ";
+case 18: if (_mode == 0) return "start"; else return "start";
+case 16: if (_mode == 0) return "tooMany"; else return "!!!SYSTEM REACHED BAD STATE!!! tooMany "+new _BadStateExceptionStudentBank().toString()+" ";
+case 17: if (_mode == 0) return "badDelete"; else return "!!!SYSTEM REACHED BAD STATE!!! badDelete "+new _BadStateExceptionStudentBank().toString()+" ";
 default: return "!!!SYSTEM REACHED AN UNKNOWN STATE!!!";
 }
 }

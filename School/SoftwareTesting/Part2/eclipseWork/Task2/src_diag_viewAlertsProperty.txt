@@ -1,0 +1,12 @@
+digraph _logic_viewAlertsProperty {
+rankdir=LR;
+node [shape = circle]; login blocked alerts marketAlertUM;
+node [shape = point]; _s_s;
+_s_s -> marketAlertUM;
+blocked -> login [ label = "(1) unlockLogin\\locked == false && lockedTime . compareTo ( 10 ) >= 0 \\badLogins = 0 ; System . out . println ( \" Back to the login state \" ) ; "];
+marketAlertUM -> login [ label = "(1) loginRequest\\\\badLogins = 0 ; System . out . println ( \" Login reuqest has been recorded \" ) ; "];
+login -> login [ label = "(1) badLogin\\badLogins == 0 \\badLogins ++ ; System . out . println ( \" Bad login observed \" ) ; "];
+login -> blocked [ label = "(2) badLogin\\badLogins == 1 \\badLogins = 0 ; System . out . println ( \" Entering blocked state \" ) ; "];
+login -> login [ label = "(3) goodLogin\\\\goodLogins ++ ; System . out . println ( \" Good login recorded \" ) ; "];
+login -> alerts [ label = "(4) viewAlerts\\goodLogins == 1 \\; System . out . println ( \" Viewing alerts! \" ) ; "];
+}

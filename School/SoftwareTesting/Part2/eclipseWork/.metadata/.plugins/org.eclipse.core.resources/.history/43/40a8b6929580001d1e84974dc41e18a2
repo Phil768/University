@@ -1,0 +1,62 @@
+package aspects;
+
+import larva.*;
+public aspect _asp_sendAlerts0 {
+
+public static Object lock = new Object();
+
+boolean initialized = false;
+
+after():(staticinitialization(*)){
+if (!initialized){
+	initialized = true;
+	_cls_sendAlerts0.initialize();
+}
+}
+before () : (call(* *.goodResponse(..)) && !cflow(adviceexecution()) && !cflow(within(larva.*))  && !(within(larva.*))) {
+
+synchronized(_asp_sendAlerts0.lock){
+
+_cls_sendAlerts0 _cls_inst = _cls_sendAlerts0._get_cls_sendAlerts0_inst();
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 24/*goodResponse*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 24/*goodResponse*/);
+}
+}
+before () : (call(* *.goodRequest(..)) && !cflow(adviceexecution()) && !cflow(within(larva.*))  && !(within(larva.*))) {
+
+synchronized(_asp_sendAlerts0.lock){
+
+_cls_sendAlerts0 _cls_inst = _cls_sendAlerts0._get_cls_sendAlerts0_inst();
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 22/*goodRequest*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 22/*goodRequest*/);
+}
+}
+before ( boolean blocked) : (call(* *.setBlocked(..)) && args(blocked) && !cflow(adviceexecution()) && !cflow(within(larva.*))  && !(within(larva.*))) {
+
+synchronized(_asp_sendAlerts0.lock){
+
+_cls_sendAlerts0 _cls_inst = _cls_sendAlerts0._get_cls_sendAlerts0_inst();
+_cls_inst.blocked = blocked;
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 28/*unblockRequest*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 28/*unblockRequest*/);
+}
+}
+before () : (call(* *.badRequest(..)) && !cflow(adviceexecution()) && !cflow(within(larva.*))  && !(within(larva.*))) {
+
+synchronized(_asp_sendAlerts0.lock){
+
+_cls_sendAlerts0 _cls_inst = _cls_sendAlerts0._get_cls_sendAlerts0_inst();
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 20/*badRequest*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 20/*badRequest*/);
+}
+}
+before () : (call(* *.addAlert(..)) && !cflow(adviceexecution()) && !cflow(within(larva.*))  && !(within(larva.*))) {
+
+synchronized(_asp_sendAlerts0.lock){
+
+_cls_sendAlerts0 _cls_inst = _cls_sendAlerts0._get_cls_sendAlerts0_inst();
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 26/*addAlert*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 26/*addAlert*/);
+}
+}
+}

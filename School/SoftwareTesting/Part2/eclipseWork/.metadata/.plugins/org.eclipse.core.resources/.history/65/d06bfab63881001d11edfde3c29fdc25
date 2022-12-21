@@ -1,0 +1,35 @@
+GLOBAL{
+	VARIABLES{
+		int badLogins = 0;
+		Clock lockedTime = new Clock();
+	}
+	EVENTS{
+		loginRequest() = {*.loginRequest()}
+		badLogin() = {*.badLogin()}
+		goodLogin() = {*.goodLogin()}
+		viewAlerts() = {*.viewAlerts()}
+		unlockLogin(boolean locked) = {*.setLocked(locked)}
+	}
+	
+	PROPERTY sendAlertsProperty{
+		STATES{
+			NORMAL{
+				login
+				blocked
+				alerts
+			}
+			STARTING{
+				marketAlertUM
+			}
+		}
+	
+		TRANSITIONS{
+			marketAlertUM -> login [loginRequest\\badLogins = 0; System.out.println("Login reuqest has been recorded");]
+			login -> login [badLogin\badLogins < 1\badLogins++; System.out.println("Bad login observed");]
+			login -> blocked [badLogin\badLogins == 1\badLogins = 0; System.out.println("Entering blocked state");]
+			blocked -> login [unlockLogin\locked == false && lockedTime.compareTo(10)>=0\badLogins = 0; System.out.println("Back to the login state");]
+			login -> login [goodLogin\\badLogins = 0; System.out.println("Good login recorded");]
+			login -> alerts [viewAlerts\\; System.out.println("Viewing alerts!");]
+		}
+	}
+}

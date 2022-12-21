@@ -1,0 +1,35 @@
+GLOBAL{
+	VARIABLES{
+		int badRequests = 0;
+		Clock blockedTime = new Clock();
+	}
+	EVENTS{
+		%%These refer to both POST and DELETE requests.
+		badRequest() = {*.badRequest()}
+		goodRequest() = {*.goodRequest()}
+		goodResponse() = {*.goodResponse()}
+		addAlert() = {*.addAlert()}
+		unblockRequest(boolean blocked) = {*.setBlocked(blocked)}
+	}
+	
+	PROPERTY sendAlertsProperty{
+		STATES{
+			NORMAL{
+				blocked
+				marketAlertUM
+			}
+			STARTING{
+				scraper
+			}
+		}
+	
+		TRANSITIONS{
+			scraper -> scraper [addAlert\badRequests == 0\badRequests = 0; System.out.println("Alerts have been added");]
+			scraper -> scraper [badRequest\badRequests == 0\badRequests++; System.out.println("Bad request observed: " + badRequests);]
+			scraper -> blocked [badRequest\badRequests == 1\badRequests = 0; System.out.println("Entering blocked state: " + badRequests);]
+			blocked -> scraper [unblockRequest\blocked == false && blockedTime.compareTo(10)>=0\badRequests = 0; System.out.println("Back to the initial scraper state");]
+			scraper -> marketAlertUM [goodRequest\badRequests == 0\; System.out.println("Good request sent");]
+			marketAlertUM -> scraper [goodResponse\\; System.out.println("Recieved");]
+		}
+	}
+}

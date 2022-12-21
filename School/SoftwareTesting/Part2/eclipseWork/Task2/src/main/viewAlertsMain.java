@@ -11,11 +11,11 @@ public class viewAlertsMain {
 	}
 	
 	public static void runner(Login login){
-		//Stating that a login request has been created and indicating that we have moved on from the start state.
-		login.loginRequest();
 		//Initialising the Random class which will be used further on.
 		final Random rand = new Random();
 		while(true){
+			//Stating that a login request has been created and indicating that we have moved on from the start state.
+			login.loginRequest();
 			//Getting random number between 1 and 2 to simulate if it is a good or bad login.
 			final int loginStatus = rand.nextInt((2 - 1) + 1) + 1;
 			//Setting the status of the system accordingly.
@@ -32,6 +32,36 @@ public class viewAlertsMain {
 				}
 				//Re-setting the login status.
 				login.setLocked(false);
+			}else{
+				/*In the below, the simulate method is repeated since the eventlog is deleted everytime it is accessed.*/
+				//Creating a new event log evry time by running a brief scraper function.
+				new simulateInteraction().simulate();
+				//Getting the loggedIn status from the API.
+				String loggedIn = new sendRequest().getLoginStatus();
+				//Creating a new event log evry time by running a brief scraper function.
+				new simulateInteraction().simulate();
+				//Getting the logType from the API (Login).
+				int loginLogType = new sendRequest().getEventLogType(0);
+				//Creating a new event log evry time by running a brief scraper function.
+				new simulateInteraction().simulate();
+				//Getting the logType from the API (viewAlerts).
+				int alertsLogType = new sendRequest().getEventLogType(1);
+				//Checking the obtained values from the event log to verify the system monitor.
+				if(loggedIn == "true" && loginLogType == 5){
+					//Displaying the message that there has been a good login.
+					login.goodLogin();
+					//Checking if the user has viewed the alerts after a good login has been recorded.
+					if(alertsLogType == 7){
+						//Displaying the appropriate message since the alerts have been viewed.
+						login.viewAlerts();
+					}
+				}
+			}
+			//Putting the system to sleep to simulate a brief timeout.
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 	}

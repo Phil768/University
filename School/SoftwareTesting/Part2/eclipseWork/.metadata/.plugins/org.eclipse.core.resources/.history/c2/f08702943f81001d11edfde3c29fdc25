@@ -1,0 +1,18 @@
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>marketAlertUM
+Login reuqest has been recorded
+[viewAlertsProperty]MOVED ON METHODCALL: void main.Login.loginRequest() TO STATE::> login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+Bad login observed
+[viewAlertsProperty]MOVED ON METHODCALL: void main.Login.badLogin() TO STATE::> login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login
+[viewAlertsProperty]AUTOMATON::> viewAlertsProperty() STATE::>login

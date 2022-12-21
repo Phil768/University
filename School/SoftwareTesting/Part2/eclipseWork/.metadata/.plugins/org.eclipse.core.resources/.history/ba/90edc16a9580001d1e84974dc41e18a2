@@ -1,0 +1,74 @@
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+Alerts have been added
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.addAlert() TO STATE::> scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+Bad request observed
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.badRequest() TO STATE::> scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+Entering blocked state
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.setBlocked(boolean) TO STATE::> blocked
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>blocked
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>blocked
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>blocked
+Back to the initial scraper state
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.setBlocked(boolean) TO STATE::> scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+Bad request observed
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.badRequest() TO STATE::> scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+Good request sent
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.goodRequest() TO STATE::> marketAlertUM
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>marketAlertUM
+Recieved
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.goodResponse() TO STATE::> scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+Good request sent
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.goodRequest() TO STATE::> marketAlertUM
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>marketAlertUM
+Recieved
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.goodResponse() TO STATE::> scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+Good request sent
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.goodRequest() TO STATE::> marketAlertUM
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>marketAlertUM
+Recieved
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.goodResponse() TO STATE::> scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+Good request sent
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.goodRequest() TO STATE::> marketAlertUM
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>marketAlertUM
+Recieved
+[sendAlertsProperty]MOVED ON METHODCALL: void main.Alert.goodResponse() TO STATE::> scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper
+[sendAlertsProperty]AUTOMATON::> sendAlertsProperty() STATE::>scraper

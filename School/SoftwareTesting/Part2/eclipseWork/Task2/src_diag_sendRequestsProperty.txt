@@ -1,0 +1,12 @@
+digraph _logic_sendRequestsProperty {
+rankdir=LR;
+node [shape = circle]; blocked marketAlertUM scraper;
+node [shape = point]; _s_s;
+_s_s -> scraper;
+blocked -> scraper [ label = "(1) unblockRequest\\blocked == false && blockedTime . compareTo ( 10 ) >= 0 \\badRequests = 0 ; System . out . println ( \" Back to the initial scraper state \" ) ; "];
+marketAlertUM -> scraper [ label = "(1) goodResponse\\\\; System . out . println ( \" Recieved \" ) ; "];
+scraper -> scraper [ label = "(1) addAlert\\badRequests == 0 \\badRequests = 0 ; System . out . println ( \" Alerts have been added \" ) ; "];
+scraper -> scraper [ label = "(2) badRequest\\badRequests == 0 \\badRequests ++ ; System . out . println ( \" Bad request observed:  \" + badRequests ) ; "];
+scraper -> blocked [ label = "(3) badRequest\\badRequests == 1 \\badRequests = 0 ; System . out . println ( \" Entering blocked state:  \" + badRequests ) ; "];
+scraper -> marketAlertUM [ label = "(4) goodRequest\\badRequests == 0 \\; System . out . println ( \" Good request sent \" ) ; "];
+}
